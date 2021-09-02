@@ -1,12 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Layout } from "./Pages/Layout/index";
+import "./App.scss";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Layout } from "./Layout/index";
 
 function App() {
   return (
     <div className="App">
-      <Layout />
+      <Router>
+        <Layout />
+      </Router>
     </div>
   );
 }

@@ -1,0 +1,62 @@
+.input {
+  max-width: 350px;
+}
+.list {
+  margin-top: 20px;
+  max-width: 900px;
+}
+
+.book {
+  margin: 0 20px 40px;
+  grid-template-rows: auto 1fr auto;
+  width: 150px;
+  text-align: center;
+
+  &__img {
+    width: 124px;
+    height: 186px;
+
+    &--mock {
+      background-color: #f5f5f5;
+    }
+  }
+
+  &__buttons {
+    width: 124px;
+
+    &-item {
+      width: 30px;
+      height: 30px;
+
+      // books_3532358
+      // selling_902725
+      // wishlist_4379680
+
+      &[data-type="collection"] {
+        background-image: url("https://image.flaticon.com/icons/png/512/3532/3532943.png");
+      }
+
+      &[data-type="sell"] {
+        background-image: url("https://image.flaticon.com/icons/png/512/902/902762.png");
+      }
+
+      &[data-type="wishlist"] {
+        background-image: url("https://image.flaticon.com/icons/png/512/4379/4379561.png");
+      }
+
+      &[data-status="true"] {
+        &[data-type="collection"] {
+          background-image: url("https://image.flaticon.com/icons/png/512/3532/3532358.png");
+        }
+
+        &[data-type="sell"] {
+          background-image: url("https://image.flaticon.com/icons/png/512/902/902725.png");
+        }
+
+        &[data-type="wishlist"] {
+          background-image: url("https://image.flaticon.com/icons/png/512/4379/4379680.png");
+        }
+      }
+    }
+  }
+}
