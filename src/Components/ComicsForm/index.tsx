@@ -16,9 +16,13 @@ export function ComicsForm() {
     authors: string,
     description: string,
     characters: string,
+    genres: string,
     edition: string,
-    year: number;
+    includes: string,
+    volume: string,
+    year: number,
     publisher: string,
+    cover: any,
     original: number,
     original_publisher: string
   };
@@ -26,19 +30,41 @@ export function ComicsForm() {
   const onSubmit = (data: Comics) => {
     const authors = data.authors.split(", ");
     const characters = data.characters.split(", ");
+    const genres = data.genres.split(", ");
+    let cover: string | ArrayBuffer | null = '';
+      if (data.cover[0]) {
+        var FR = new FileReader();
+      
+  
+        FR.addEventListener("load", function (e) {
+          // document.getElementById("img").src = e.target.result;
+          cover =  e.target!.result;
+        });
+    
+        FR.readAsDataURL(data.cover[0]);
+        
+      }
+      console.log(cover);
+      
+    
     const newComics = {
       title: data.title,
       authors,
       description: data.description,
       characters,
+      genres,
       edition: data.edition,
       year: data.year,
+      includes: data.includes,
+      volume: data.volume,
+      cover,
       publisher: data.publisher,
       original: data.original,
-      original_publisher: data.original_publisher
+      original_publisher: data.original_publisher,
+     
     };
     console.log(newComics);
-    reset();
+    // reset();
   };
 
   return (
@@ -70,11 +96,29 @@ export function ComicsForm() {
         placeholder="Персонаж/персонажи"
         {...register("characters")}
       />
+      <input
+        className={inputClasses}
+        type="text"
+        placeholder="Жанр/жанры"
+        {...register("genres")}
+      />
         <input
         className={inputClasses}
         type="text"
         placeholder="Тип издания"
         {...register("edition")}
+      />
+       <input
+        className={inputClasses}
+        type="text"
+        placeholder="Включает выпуски"
+        {...register("includes")}
+      />
+       <input
+        className={inputClasses}
+        type="text"
+        placeholder="Том (если есть)"
+        {...register("volume")}
       />
       <input
         className={inputClasses}
@@ -99,6 +143,12 @@ export function ComicsForm() {
         type="text"
         placeholder="Издатель оригинала"
         {...register("original_publisher")}
+      />
+       <input
+        className={inputClasses}
+        type="file"
+        placeholder="Издатель оригинала"
+        {...register("cover")}
       />
       <button type="submit" className={buttonClasses}>
         Добавить

@@ -1,0 +1,12 @@
+{
+  "/api/comics/list": "/comics",
+  "/:api/comics/list/:id/show": "/:comics/:id",
+  "/api/comics/list/:id/:title": "/comics?title=:title",
+  "/api/comics/list\\?id=:id": "/comics/:id",
+  "/api/comics/list/:id?_embed=comments": "",
+  "/posts?_embed=comments": "/posts?_embed=comments",
+  "/posts/1?_embed=comments": "/posts/1?_embed=comments",
+  "/posts/:category": "/posts?category=:category",
+  "/posts/:id/:category": "/posts/:id?category=:category"
+
+}
