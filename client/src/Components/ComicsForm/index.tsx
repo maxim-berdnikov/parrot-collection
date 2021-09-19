@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function ComicsForm() {
@@ -27,45 +28,58 @@ export function ComicsForm() {
     original_publisher: string
   };
 
+  const [showCover, setShowCover] = useState<any>();
+  const [sendComics, setSendComics] = useState<any>();
+
   const onSubmit = (data: Comics) => {
-    const authors = data.authors.split(", ");
-    const characters = data.characters.split(", ");
-    const genres = data.genres.split(", ");
-    let cover: string | ArrayBuffer | null = '';
+    // const authors = data.authors.split(", ");
+    // const characters = data.characters.split(", ");
+    // const genres = data.genres.split(", ");
+    let cover: string | ArrayBuffer | null = '';    
       if (data.cover[0]) {
-        var FR = new FileReader();
-      
-  
+        var FR = new FileReader();      
         FR.addEventListener("load", function (e) {
-          // document.getElementById("img").src = e.target.result;
+          // document.getElementById("img").src = e.target!.result;
           cover =  e.target!.result;
-        });
-    
-        FR.readAsDataURL(data.cover[0]);
-        
-      }
-      console.log(cover);
+          setShowCover(cover);
+
+          const newComics = {
+            title: data.title,
+            authors: JSON.stringify(data.authors),
+            description: data.description,
+            characters: JSON.stringify(data.characters),
+            cover,
+            genres: JSON.stringify(data.genres),
+            edition: data.edition,
+            year: data.year,
+            includes: data.includes,
+            volume: data.volume,
+            publisher: data.publisher,
+            original: data.original,
+            original_publisher: data.original_publisher,
+          };
       
+         
+          console.log(newComics);
+          setSendComics(newComics);
+          axios.post("/api/comics/add", newComics)
+        });
+        FR.readAsDataURL(data.cover[0]);
+      }      
     
-    const newComics = {
-      title: data.title,
-      authors,
-      description: data.description,
-      characters,
-      genres,
-      edition: data.edition,
-      year: data.year,
-      includes: data.includes,
-      volume: data.volume,
-      cover,
-      publisher: data.publisher,
-      original: data.original,
-      original_publisher: data.original_publisher,
-     
-    };
-    console.log(newComics);
+ 
     // reset();
   };
+
+  // useEffect(() => {
+  //   console.log(showCover);
+    
+  //   if (sendComics !== undefined && showCover !==undefined) {
+  //     console.log(sendComics);
+      
+  //     axios.post("/api/comics/add", sendComics)
+  //   }
+  // }, [showCover])
 
   return (
     <form

@@ -8,7 +8,6 @@ import {
   QueryClientProvider,
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-
 import "./style.scss";
 import { ComicsItem } from "../ComicsItem/index";
 
@@ -28,6 +27,7 @@ interface Comics {
 }
 
 const queryClient = new QueryClient();
+
 export function ComicsList() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -57,9 +57,24 @@ function ComicsListGet() {
 }
 
 function RenderComicsList(collection: Comics[]) {
-  const newArr = Object.values(collection).sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
+  const newCollection = Object.values(collection);
+
+  
+    const newArr = newCollection.sort(function (a, b) {
+      if (a.title < b.title) {
+        return 1;
+      }
+      if (a.title > b.title) {
+        return -1;
+      }
+      // a должно быть равным b
+      return 0;
+    });
+  
+  
+  // const newArr = newCollection.sort((a, b) =>
+  //   a.title.localeCompare(b.title)
+  // );
 
   const [books, setBooks] = useState(newArr);
 

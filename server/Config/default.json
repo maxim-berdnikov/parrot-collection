@@ -1,4 +1,5 @@
 {
     "port": 5000,
-    "db": ""
+    "baseUrl": "http://localhost:5000/",
+    "db": "mongodb+srv://parrot_head:9kCM*yacsva_wk.@parrotcollection.rzf99.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }

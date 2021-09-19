@@ -42,11 +42,11 @@ export function ComicsItem(comics: Comics) {
       }
     };
   
-    useEffect(() => {
-      setCollection(comics.owned.includes(currentUser));
-      setSell(comics.sell.includes(currentUser));
-      setWishlist(comics.wishlist.includes(currentUser));
-    }, [comics]);
+    // useEffect(() => {
+    //   setCollection(comics.owned.includes(currentUser));
+    //   setSell(comics.sell.includes(currentUser));
+    //   setWishlist(comics.wishlist.includes(currentUser));
+    // }, [comics]);
   
     return (
       <div className="book grid">
