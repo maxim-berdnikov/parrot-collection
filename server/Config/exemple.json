@@ -1,0 +1,6 @@
+{
+    "instruction": "create default.json form this file",
+    "port": 5000,
+    "baseUrl": "http://localhost:5000/",
+    "db": ""
+}
