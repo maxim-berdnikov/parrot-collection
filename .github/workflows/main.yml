@@ -32,7 +32,7 @@ jobs:
         run: cd client && npm install
 
       - name: Build Client
-        run: cd client && npm run build
+        run: cd client && CI=false npm run build
       
       - name: Deploy Client
         uses: peaceiris/actions-gh-pages@v3
