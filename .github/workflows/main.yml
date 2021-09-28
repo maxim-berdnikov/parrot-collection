@@ -25,12 +25,19 @@ jobs:
 #         run: cd client && npm install
         
       
-      - uses: ActionwareIO/branch-push-action@action
+#       - uses: ActionwareIO/branch-push-action@action
+#         with:
+#           branch: server1
+#           files: |
+#             server
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: server1
-          files: |
-            server/**
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./server
+          publish_branch: server3
 
       - uses: andstor/copycat-action@v3
         with:
