@@ -29,13 +29,13 @@ jobs:
         with:
           branch: server1
           files: |
-            server/.
+            server/**
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
-          src_path: /server/
+          src_path: ./server/
           dst_path: /.
           src_branch: master
           dst_branch: server
