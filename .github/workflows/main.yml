@@ -23,3 +23,6 @@ jobs:
         
       - name: Install client dependencies
         run: cd client && npm install
+        
+      - name: Run app
+        run: cd client && npm start
