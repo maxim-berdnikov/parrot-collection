@@ -23,29 +23,10 @@ jobs:
         
 #       - name: Install client dependencies
 #         run: cd client && npm install
-        
-      
-#       - uses: ActionwareIO/branch-push-action@action
-#         with:
-#           branch: server1
-#           files: |
-#             server
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy
+      - name: Deploy Server
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./server
-          publish_branch: server3
-
-      - uses: andstor/copycat-action@v3
-        with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          src_path: ./server/
-          dst_path: /.
-          src_branch: master
-          dst_branch: server
-          dst_owner: m-berdnikov
-          dst_repo_name: parrot-collection
-
+          publish_branch: server
