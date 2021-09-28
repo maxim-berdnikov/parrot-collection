@@ -27,9 +27,9 @@ jobs:
       
       - uses: ActionwareIO/branch-push-action@action
         with:
-          branch: server
+          branch: server1
           files: |
-            - 'server/*'
+            server/.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: andstor/copycat-action@v3
