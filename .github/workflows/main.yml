@@ -29,4 +29,6 @@ jobs:
         with:
           branch: server
           files: |
-           ./server
+            ./server/**
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
