@@ -25,18 +25,18 @@ jobs:
 #         run: cd client && npm install
         
       
-#       - uses: ActionwareIO/branch-push-action@action
-#         with:
-#           branch: server
-#           files: |
-#             server/*
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: ActionwareIO/branch-push-action@action
+        with:
+          branch: server
+          files: |
+            - 'server/*'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           src_path: /server/
-          dst_path: /
+          dst_path: /.
           src_branch: master
           dst_branch: server
           dst_owner: m-berdnikov
