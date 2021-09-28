@@ -18,11 +18,18 @@ jobs:
 #       - name: Install common dependencies
 #         run: npm install
         
-#       - name: Install server dependencies
-#         run: cd server && npm install
+      - name: Install server dependencies
+        run: cd server && npm install
         
-#       - name: Install client dependencies
-#         run: cd client && npm install
+      - name: Deploy Server
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./server
+          publish_branch: server
+        
+      - name: Install client dependencies
+        run: cd client && npm install
 
       - name: Build Client
         run: cd client && npm run build
@@ -34,9 +41,4 @@ jobs:
           publish_dir: ./client/build
           publish_branch: client
 
-      - name: Deploy Server
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./server
-          publish_branch: server
+    
