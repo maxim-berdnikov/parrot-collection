@@ -25,4 +25,4 @@ jobs:
         run: cd client && npm install
         
       - name: Run app
-        run: cd client && npm start
+        run: cd server && npm start
