@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
           
-      - name: Install common dependencies
-        run: npm install
+#       - name: Install common dependencies
+#         run: npm install
         
 #       - name: Install server dependencies
 #         run: cd server && npm install
