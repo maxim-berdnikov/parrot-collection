@@ -23,8 +23,5 @@ jobs:
           src_path: /.
           src_branch: client
           dst_owner: m-berdnikov
-          external_repository: m-berdnikov/m-berdnikov.github.io
-          publish_branch: client1 
-          publish_dir: /.
-
-    
+          dst_repo_name: m-berdnikov/m-berdnikov.github.io
+          dst_branch: client1 
