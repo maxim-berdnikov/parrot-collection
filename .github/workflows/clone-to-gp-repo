@@ -1,4 +1,4 @@
-name: Deploy app
+name: Clone to GP repo
 
 jobs:
   build:
