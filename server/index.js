@@ -1,10 +1,6 @@
 const express = require("express");
-// import express from "express";
 const config = require("config");
-// import config from "config";
 const mongoose = require("mongoose");
-// import mongoose from "mongoose";
-// import Comics from './routes/comics.routes'
 
 const app = express();
 
