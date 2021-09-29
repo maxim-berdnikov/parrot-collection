@@ -1,0 +1,21 @@
+name: Deploy app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Push to GP repo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          src_path: /.
+          src_branch: client
+          dst_owner: m-berdnikov
+          external_repository: m-berdnikov/m-berdnikov.github.io
+          publish_branch: client1 
+          publish_dir: /.
+
+    
