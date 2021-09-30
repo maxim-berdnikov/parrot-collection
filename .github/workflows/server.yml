@@ -27,3 +27,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./server
           publish_branch: server
+          full_commit_message: ${{ github.event.head_commit.message }}
+
