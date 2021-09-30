@@ -3,11 +3,11 @@ name: Deploy client
 on:
   push:
     paths:
-      - 'cleint/**'
+      - 'client/**'
       
   pull_request:
     paths:
-      - 'cleint/**'
+      - 'client/**'
 
   workflow_dispatch:
 
