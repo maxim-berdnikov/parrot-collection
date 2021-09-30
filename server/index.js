@@ -22,13 +22,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 console.log(process.env.DB_URL)
 
-const start = async () => {
-  try {
-    await mongoose.connect(process.env.DB_URL);
-  } catch (e) {
-    console.log("Server error", e.message);
-    process.exit(1);
-  }
-};
+// const start = async () => {
+//   try {
+//     await mongoose.connect(process.env.DB_URL);
+//   } catch (e) {
+//     console.log("Server error", e.message);
+//     process.exit(1);
+//   }
+// };
 
-start();
+// start();
