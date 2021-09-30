@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.use(express.json({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send('hello world');
+});
+
 app.use("/api/comics", require("./routes/comics.routes"));
 
 const PORT = config.get("port") || 5000;
