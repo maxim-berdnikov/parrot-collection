@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=production && node index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
     "server": "nodemon index.js"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.6",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "mongodb": "^4.1.1",
     "mongoose": "^6.0.5",
