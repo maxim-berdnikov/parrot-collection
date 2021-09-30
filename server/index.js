@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
+console.log(process.env.DB_URL)
 
 // const start = async () => {
 //   try {
