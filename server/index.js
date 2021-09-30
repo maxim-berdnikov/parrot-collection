@@ -15,19 +15,19 @@ app.get("/", (req, res) => {
   res.send('hello world');
 });
 
-app.use("/api/comics", require("./routes/comics.routes"));
+// app.use("/api/comics", require("./routes/comics.routes"));
 
 const PORT = config.get("port") || 5000;
 
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 
-const start = async () => {
-  try {
-    await mongoose.connect(config.get("db"));
-  } catch (e) {
-    console.log("Server error", e.message);
-    process.exit(1);
-  }
-};
+// const start = async () => {
+//   try {
+//     await mongoose.connect(config.get("db"));
+//   } catch (e) {
+//     console.log("Server error", e.message);
+//     process.exit(1);
+//   }
+// };
 
-start();
+// start();
