@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, HashRouter } from "react-router-dom";
 import { Layout } from "./Layout/index";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+<!--       <Router> -->
+      <HashRouter>
         <Layout />
-      </Router>
+       <HashRouter/>
+<!--       </Router> -->
     </div>
   );
 }
