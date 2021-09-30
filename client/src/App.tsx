@@ -6,9 +6,9 @@ import { Layout } from "./Layout/index";
 function App() {
   return (
     <div className="App">
-      <HashRouter>
+      <Router>
         <Layout />
-       </HashRouter>
+       </Router>
     </div>
   );
 }
