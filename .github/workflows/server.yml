@@ -2,10 +2,14 @@ name: Deploy server
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'server/**'
       
   pull_request:
+    branches:
+      - master
     paths:
       - 'server/**'
 
