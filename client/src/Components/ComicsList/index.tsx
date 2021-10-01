@@ -38,7 +38,7 @@ export function ComicsList() {
 
 function ComicsListGet() {
   const getAllComics = async () => {
-    const { data } = await axios.get("/api/comics/list");
+    const { data } = await axios.get(`${process.env.REQUEST_URL}/api/comics/list`);
     return data;
   };
 
