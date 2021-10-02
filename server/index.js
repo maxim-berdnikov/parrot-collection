@@ -1,12 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const corsMiddleware = require('./cors')
+
+// const corsMiddleware = require('./cors/index.js')
+
+const cors = require("cors");
+
+// const corsOptions = {
+//     origin: ['https://m-berdnikov.github.io/'],
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   }
 
 require("dotenv").config();
 
 const app = express();
 
-app.use(corsMiddleware)
+app.use(cors());
+app.options("*", cors());
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ extended: true }));
