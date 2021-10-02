@@ -14,7 +14,7 @@ const app = express();
 
 // llowed origins.
 // If you have more origins you would like to add, you can add them to the array below.
-const allowedOrigins = ['http://localdfgdfghost:3000'];
+const allowedOrigins = [`${process.env.ALLOW_REQUEST_URL}`];
 
 const options = {
   origin: allowedOrigins
