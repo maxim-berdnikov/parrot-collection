@@ -1,5 +1,3 @@
-// import { Router } from "express";
-// import Comics from "../models/Comics";
 const { Router } = require("express");
 const Comics = require("../models/Comics");
 
