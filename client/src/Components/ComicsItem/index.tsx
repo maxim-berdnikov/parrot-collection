@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { useMutation } from 'react-query';
 
 interface Comics {
-    id: number;
+    _id: number;
     title: string;
     authors: string[];
     description: string;
@@ -22,7 +22,7 @@ export function ComicsItem(comics: Comics) {
     const [collection, setCollection] = useState(false);
     const [sell, setSell] = useState(false);
     const [wishlist, setWishlist] = useState(false);
-    const mutation = useMutation((comicsItem: Comics) => axios.delete(`/comics/${comicsItem.id}`, {}))
+    const mutation = useMutation((comicsItem: Comics) => axios.delete(`/comics/${comicsItem._id}`, {}))
 
   
     const handleClick = (type: "collection" | "sell" | "wishlist") => {

@@ -1,18 +1,19 @@
 const express = require("express");
-// const config = require("config");
 const mongoose = require("mongoose");
+const corsMiddleware = require('./cors')
+
+require("dotenv").config();
 
 const app = express();
 
+app.use(corsMiddleware)
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
-app.use(express.json());
-
 app.use(express.json({ extended: true }));
 
+
 app.get("/", (req, res) => {
-  res.send('hello world');
+  res.send("hello world");
 });
 
 app.use("/api/comics", require("./routes/comics.routes"));
@@ -20,7 +21,6 @@ app.use("/api/comics", require("./routes/comics.routes"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
-// console.log(process.env.DB_URL)
 
 const start = async () => {
   try {

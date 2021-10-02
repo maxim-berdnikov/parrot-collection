@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "start": "concurrently \"npm start --prefix client\" \"npm start --prefix server\"",
+    "dev": "concurrently \"npm start --prefix client\" \"npm run server --prefix server\"",
     "server": "npm run server --prefix server",
-    "client": "npm run dev --prefix client"
+    "client": "npm start --prefix client",
+    "client dev": "npm run dev --prefix client",
+    "dep": "npm i --prefix server && npm i --prefix client"
   },
   "repository": {
     "type": "git",
