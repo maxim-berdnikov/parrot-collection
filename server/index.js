@@ -18,7 +18,7 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors());
-app.options("https://m-berdnikov.github.io/", cors());
+app.options("http://localhost:3000/", cors());
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
