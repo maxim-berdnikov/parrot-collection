@@ -2,6 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 // const corsMiddleware = require('./cors/index.js')
 
+
+require("dotenv").config();
+
+
 const cors = require("cors");
 
 // const corsOptions = {
@@ -19,6 +23,7 @@ app.options("https://m-berdnikov.github.io/", cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ extended: true }));
+
 
 app.get("/", (req, res) => {
   res.send("hello world");
