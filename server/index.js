@@ -1,38 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const corsMiddleware = require('./cors/index.js')
 const cors = require("cors");
 
 require("dotenv").config();
 
-
-
-require("dotenv").config();
-
 const app = express();
-
-console.log(process.env.ALLOW_REQUEST_URL);
-
-
-// llowed origins.
-// If you have more origins you would like to add, you can add them to the array below.
 const allowedOrigins = [`${process.env.ALLOW_REQUEST_URL}`];
-
 const options = {
   origin: allowedOrigins
 };
-
-// Then pass these options to cors:
 app.use(cors(options));
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
-
 app.use(express.json());
 app.use(express.json({ extended: true }));
-
-
 
 app.get("/", (req, res) => {
   res.send("hello world");

@@ -59,7 +59,7 @@ export function ComicsItem(comics: Comics) {
         ) : (
           <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer"></div>
         )}
-        <p className="book__title place-self-center">{comics.title}</p>
+        <p className="book__title place-self-center text-sm">{comics.title}</p>
         <div className="book__buttons mt-3 mx-auto flex justify-between">
           <div
             className="book__buttons-item bg-center bg-cover bg-no-repeat transition"

@@ -5,7 +5,7 @@ const router = Router();
 
 router.post("/add", async (req, res) => {
   try {
-    const newItem = {...req.body, owned: "0", sell: "0", wishlist: "0", addingDate: new Date(), };
+    const newItem = {...req.body, owned: "0", sell: "0", wishlist: "0", addingDate: new Date.now(), };
     const newBdItem = new Comics({ ...newItem });
     console.log(newBdItem);
 
