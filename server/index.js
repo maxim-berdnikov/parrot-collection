@@ -11,6 +11,8 @@ require("dotenv").config();
 
 const app = express();
 
+console.log(process.env.ALLOW_REQUEST_URL);
+
 
 // llowed origins.
 // If you have more origins you would like to add, you can add them to the array below.
