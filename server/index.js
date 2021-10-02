@@ -1,28 +1,35 @@
 const express = require("express");
 const mongoose = require("mongoose");
 // const corsMiddleware = require('./cors/index.js')
-
+const cors = require("cors");
 
 require("dotenv").config();
 
 
-const cors = require("cors");
-
-const corsOptions = {
-    origin: ['https://m-berdnikov.github.io/'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
 
 require("dotenv").config();
 
 const app = express();
 
-app.use(cors(corsOptions));
-// app.options("https://m-berdnikov.github.io/", cors());
+
+// llowed origins.
+// If you have more origins you would like to add, you can add them to the array below.
+const allowedOrigins = ['http://localdfgdfghost:3000'];
+
+const options = {
+  origin: allowedOrigins
+};
+
+// Then pass these options to cors:
+app.use(cors(options));
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+
+app.use(express.json());
 app.use(express.json({ extended: true }));
+
 
 
 app.get("/", (req, res) => {
