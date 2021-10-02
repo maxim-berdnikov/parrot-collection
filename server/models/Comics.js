@@ -5,6 +5,7 @@ const schema = new Schema({
   title: { type: String },
   cover: { type: String },
   authors: { type: [String] },
+  artists: { type: [String] },
   description: { type: String },
   characters: { type: [String] },
   genres: { type: [String] },
