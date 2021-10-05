@@ -1,11 +1,11 @@
 # Parrot Collection
 The easiest way to store/view/share your collections. 
 
-Клиент - https://m-berdnikov.github.io/parrot-collection
+Client - https://m-berdnikov.github.io/parrot-collection
 
-Сервер - https://parrot-collection.herokuapp.com
+Server - https://parrot-collection.herokuapp.com
 
-## Описание 
+## Description 
 
 Когда я узнал про стек MERN (MongoDB, Express, React, Node.js), то решил попробовать собрать на нем домашний проект, который, вдобавок,  будет решать какую-то 
 мою личную проблему. Проект задумывался как электронная версия моей коллекции. Затем появилась идея добавить возможность регистрирваться на сайте. 
@@ -14,7 +14,7 @@ The easiest way to store/view/share your collections.
 Изначально была идея сделать сайт, где можно будет собирать любые коллекция - комиксы, книги, фигурки, открытки, игры (выгрузка игр из профиля Steam). 
 Но пока решил сделать только с комиксами. Осталное - в далеких планах.
 
-## Стек технологий
+## Tech Stack
 
 * Backend
     * Node.js
@@ -30,7 +30,7 @@ The easiest way to store/view/share your collections.
       * Typesctipt
     * Tailwind CSS
 
-## Деплой
+## Deploy
 
 Клиентская часть лежит на Github Pages, серверная - на Heroku. Настроены две задачи в GitHub Actions. Запускаются только кода меняются файлы в соответсвующих папках.
 
