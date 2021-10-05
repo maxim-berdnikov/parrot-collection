@@ -21,6 +21,8 @@ When I found out about the MERN (MongoDB, Express, React, Node.js) stack, I deci
 * Backend
     * Node.js
       * ExpressJS
+      * Cors
+      * Dotenv
 * Database
     * MongoDB
 * Frontend
@@ -30,7 +32,7 @@ When I found out about the MERN (MongoDB, Express, React, Node.js) stack, I deci
       * React Query
       * React Router Dom
     * Axios
-    *  Typescript
+    * Typescript
     * Tailwind CSS
 
 ## Deploy
