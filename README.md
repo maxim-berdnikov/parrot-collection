@@ -23,6 +23,7 @@ When I found out about the MERN stack (MongoDB, Express, React, Node.js), I deci
       * Express
       * Cors
       * Dotenv
+      * Mongoose
 * Database
     * MongoDB
 * Frontend
