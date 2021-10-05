@@ -14,13 +14,13 @@ Server - https://parrot-collection.herokuapp.com
 Изначально была идея сделать сайт, где можно будет собирать любые коллекция - комиксы, книги, фигурки, открытки, игры (выгрузка игр из профиля Steam). 
 Но пока решил сделать только с комиксами. Осталное - в далеких планах.
 
-When I found out about the MERN (MongoDB, Express, React, Node.js) stack, I decided to use it to create a home project solving the one of my own problems.
+When I found out about the MERN stack (MongoDB, Express, React, Node.js), I decided to use it to create a home project solving the one of my own problems.
 
 ## Tech Stack
 
 * Backend
     * Node.js
-      * ExpressJS
+      * Express
       * Cors
       * Dotenv
 * Database
