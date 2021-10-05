@@ -27,9 +27,10 @@ When I found out about the MERN (MongoDB, Express, React, Node.js) stack, I deci
     * React
       * Create React App
       * React Hook Form
-      * React Query / Axios
+      * React Query
       * React Router Dom
-      * Typesctipt
+    * Axios
+    *  Typescript
     * Tailwind CSS
 
 ## Deploy
