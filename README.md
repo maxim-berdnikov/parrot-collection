@@ -36,7 +36,7 @@ When I found out about the MERN stack (MongoDB, Express, React, Node.js), I deci
     * Typescript
     * Tailwind CSS
 
-## Deploy
+## CI/CD
 
 Клиентская часть лежит на Github Pages, серверная - на Heroku. Настроены две задачи в GitHub Actions. Запускаются только кода меняются файлы в соответсвующих папках.
 
