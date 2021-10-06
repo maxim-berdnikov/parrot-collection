@@ -1,4 +1,7 @@
 # Parrot Collection
+![Client](https://github.com/m-berdnikov/parrot-collection/actions/workflows/client.yml/badge.svg)
+![Server](https://github.com/m-berdnikov/parrot-collection/actions/workflows/server.yml/badge.svg)
+
 The easiest way to store/view/share your collections. 
 
 Client - https://m-berdnikov.github.io/parrot-collection
