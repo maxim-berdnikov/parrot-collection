@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {
-  useQuery,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
+import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
-import { ComicsItem } from "../ComicsItem/index";
+import { ComicsItem } from "../ComicsListItem/index";
 
 interface Comics {
   _id: number;
@@ -50,7 +46,6 @@ function ComicsListGet() {
   return (
     <>
       {data ? <RenderComicsList {...data} /> : <p>Loading</p>}
-
       <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
@@ -60,7 +55,7 @@ function RenderComicsList(collection: Comics[]) {
   const newCollection = Object.values(collection);
 
   const newArr = newCollection.sort(function (a, b) {
-    if (a.title < b.title) {
+    if (a.title > b.title) {
       return 1;
     }
     if (a.title > b.title) {

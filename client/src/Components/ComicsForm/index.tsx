@@ -15,6 +15,7 @@ export function ComicsForm() {
   type Comics = {
     title: string;
     authors: string;
+    artists: string;
     description: string;
     characters: string;
     genres: string;
@@ -45,6 +46,7 @@ export function ComicsForm() {
 
   const onSubmit = (data: Comics) => {
     const authors = data.authors.split(", ");
+    const artists = data.artists.split(", ");
     const characters = data.characters.split(", ");
     const genres = data.genres.split(", ");
     let cover: string | ArrayBuffer | null = "";
@@ -61,6 +63,7 @@ export function ComicsForm() {
           const newComics = {
             title: data.title,
             authors,
+            artists,
             description: data.description,
             characters,
             cover,
@@ -100,8 +103,14 @@ export function ComicsForm() {
       <input
         className={inputClasses}
         type="text"
-        placeholder="Автор/авторы"
+        placeholder="Авторы"
         {...register("authors")}
+      />
+      <input
+        className={inputClasses}
+        type="text"
+        placeholder="Художники"
+        {...register("artists")}
       />
       <textarea
         className={textareaClasses}
