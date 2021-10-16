@@ -5,8 +5,12 @@ const router = Router();
 
 router.post("/add", async (req, res) => {
   try {
-    const newItem = {...req.body, owned: "0", sell: "0", wishlist: "0", addingDate: new Date.now(), };
+    console.log('post');
+    const newItem = {...req.body, owned: "0", sell: "0", wishlist: "0", addingDate: new Date() };
+    console.log('post 1');
+
     const newBdItem = new Comics({ ...newItem });
+    console.log('post 2');
     console.log(newBdItem);
 
     await newBdItem.save();
@@ -21,6 +25,7 @@ router.post("/add", async (req, res) => {
 
 router.get("/list", async (req, res) => {
   try {
+    console.log('get');
     const list = await Comics.find();
     res.json(list);
   } catch (e) {
