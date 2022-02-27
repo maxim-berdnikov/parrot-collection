@@ -1,18 +1,23 @@
 const express = require("express");
-// const config = require("config");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
+require("dotenv").config();
 
 const app = express();
+const allowedOrigins = [`${process.env.ALLOW_REQUEST_URL}`];
+const options = {
+  origin: allowedOrigins
+};
+app.use(cors(options));
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
 app.use(express.json());
-
 app.use(express.json({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send('hello world');
+  res.send("hello world");
 });
 
 app.use("/api/comics", require("./routes/comics.routes"));
@@ -20,15 +25,14 @@ app.use("/api/comics", require("./routes/comics.routes"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
-console.log(process.env.DB_URL)
 
-// const start = async () => {
-//   try {
-//     await mongoose.connect(process.env.DB_URL);
-//   } catch (e) {
-//     console.log("Server error", e.message);
-//     process.exit(1);
-//   }
-// };
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL);
+  } catch (e) {
+    console.log("Server error", e.message);
+    process.exit(1);
+  }
+};
 
-// start();
+start();

@@ -2,12 +2,16 @@ name: Deploy client
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'client/**'
       
-  pull_request:
-    paths:
-      - 'client/**'
+  # pull_request:
+  #   branches:
+  #     - master
+  #   paths:
+  #     - 'client/**'
 
   workflow_dispatch:
 

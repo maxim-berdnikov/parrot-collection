@@ -14,26 +14,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Check env var
+        env:
+            REQUEST_URL: ${{ secrets.REQUEST_URL }}
+        run: echo $REQUEST_URL
         
-      - name: Install server dependencies
-        run: cd server && npm ci
+#       - name: Install server dependencies
+#         run: cd server && npm ci
         
-      - name: Deploy Server
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./server
-          publish_branch: server
+#       - name: Deploy Server
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./server
+#           publish_branch: server
         
-      - name: Install client dependencies
-        run: cd client && npm ci
+#       - name: Install client dependencies
+#         run: cd client && npm ci
 
-      - name: Build Client
-        run: cd client && CI=false npm run build
+#       - name: Build Client
+#         run: cd client && CI=false npm run build
       
-      - name: Deploy Client
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./client/build
-          publish_branch: client
+#       - name: Deploy Client
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./client/build
+#           publish_branch: client

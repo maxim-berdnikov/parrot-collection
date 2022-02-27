@@ -1,18 +1,12 @@
+import React, { useState } from "react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
+import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
-import { ComicsItem } from "../ComicsItem/index";
+import { ComicsItem } from "../ComicsListItem/index";
 
 interface Comics {
-  id: number;
+  _id: number;
   title: string;
   authors: string[];
   description: string;
@@ -38,7 +32,9 @@ export function ComicsList() {
 
 function ComicsListGet() {
   const getAllComics = async () => {
-    const { data } = await axios.get("/api/comics/list");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/list`
+    );
     return data;
   };
 
@@ -50,7 +46,6 @@ function ComicsListGet() {
   return (
     <>
       {data ? <RenderComicsList {...data} /> : <p>Loading</p>}
-
       <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
@@ -59,19 +54,17 @@ function ComicsListGet() {
 function RenderComicsList(collection: Comics[]) {
   const newCollection = Object.values(collection);
 
-  
-    const newArr = newCollection.sort(function (a, b) {
-      if (a.title < b.title) {
-        return 1;
-      }
-      if (a.title > b.title) {
-        return -1;
-      }
-      // a должно быть равным b
-      return 0;
-    });
-  
-  
+  const newArr = newCollection.sort(function (a, b) {
+    if (a.title > b.title) {
+      return 1;
+    }
+    if (a.title > b.title) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+
   // const newArr = newCollection.sort((a, b) =>
   //   a.title.localeCompare(b.title)
   // );
@@ -99,7 +92,7 @@ function RenderComicsList(collection: Comics[]) {
       />
       <div className="list m-auto flex justify-center flex-wrap">
         {books.length > 0 ? (
-          books.map((comics) => <ComicsItem key={comics.id} {...comics} />)
+          books.map((comics) => <ComicsItem key={comics._id} {...comics} />)
         ) : (
           <p>Ничего не найдено :(</p>
         )}
