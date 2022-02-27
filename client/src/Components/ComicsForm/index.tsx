@@ -1,6 +1,8 @@
+import React from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 export function ComicsForm() {
   const { register, handleSubmit, reset } = useForm();
@@ -11,6 +13,9 @@ export function ComicsForm() {
   const textareaClasses = `${fieldClasses} pt-1 h-20 resize-none`;
   const buttonClasses =
     "h-10 border border-transparent rounded bg-yellow-400 font-bold text-white";
+
+    const notify = () => toast("Добавлено!");
+
 
   type Comics = {
     title: string;
@@ -50,39 +55,49 @@ export function ComicsForm() {
     const characters = data.characters.split(", ");
     const genres = data.genres.split(", ");
     let cover: string | ArrayBuffer | null = "";
-    if (data.cover[0]) {
-      console.log(data.cover[0].size);
 
-      if (data.cover[0].size > 100000) {
-        console.log("big file");
-      } else {
-        var FR = new FileReader();
-        FR.addEventListener("load", function (e) {
-          cover = e.target!.result;
+    if (data.title) {
+      const newComics = {
+        title: data.title,
+        authors,
+        artists,
+        description: data.description,
+        characters,
+        cover,
+        genres,
+        edition: data.edition,
+        year: data.year,
+        includes: data.includes,
+        volume: data.volume,
+        book: data.book,
+        publisher: data.publisher,
+        original: data.original,
+        original_publisher: data.original_publisher,
+      };
 
-          const newComics = {
-            title: data.title,
-            authors,
-            artists,
-            description: data.description,
-            characters,
-            cover,
-            genres,
-            edition: data.edition,
-            year: data.year,
-            includes: data.includes,
-            volume: data.volume,
-            book: data.book,
-            publisher: data.publisher,
-            original: data.original,
-            original_publisher: data.original_publisher,
-          };
+      if (data.cover[0]) {
+        console.log(data.cover[0].size);
 
-          console.log(newComics);
-          axios.post("/api/comics/add", newComics);
-        });
-        FR.readAsDataURL(data.cover[0]);
+        if (data.cover[0].size > 100000) {
+          console.log("big file");
+        } else {
+          var FR = new FileReader();
+          FR.addEventListener("load", function (e) {
+            cover = e.target!.result;
+          });
+          FR.readAsDataURL(data.cover[0]);
+        }
       }
+
+      console.log(newComics);
+      axios.post("/api/comics/add", newComics).then(function (response) {
+        console.log(response);
+        reset();
+        notify();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });;
     }
 
     // reset();
@@ -186,6 +201,7 @@ export function ComicsForm() {
       <button type="submit" className={buttonClasses}>
         Добавить
       </button>
+      <ToastContainer />
     </form>
   );
 }
