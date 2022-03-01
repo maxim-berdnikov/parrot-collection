@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export function ComicsForm() {
   const { register, handleSubmit, reset } = useForm();
@@ -14,8 +14,7 @@ export function ComicsForm() {
   const buttonClasses =
     "h-10 border border-transparent rounded bg-yellow-400 font-bold text-white";
 
-    const notify = () => toast("Добавлено!");
-
+  const notify = (message: string) => toast(message);
 
   type Comics = {
     title: string;
@@ -79,25 +78,43 @@ export function ComicsForm() {
         console.log(data.cover[0].size);
 
         if (data.cover[0].size > 100000) {
-          console.log("big file");
+          notify("Большой размер файла обложки")
         } else {
           var FR = new FileReader();
           FR.addEventListener("load", function (e) {
             cover = e.target!.result;
           });
           FR.readAsDataURL(data.cover[0]);
-        }
-      }
 
-      console.log(newComics);
-      axios.post(`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`, newComics).then(function (response) {
-        console.log(response);
-        reset();
-        notify();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });;
+          axios
+            .post(
+              `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
+              newComics
+            )
+            .then(function (response) {
+              console.log(response);
+              reset();
+              notify("Добавлено!");
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      } else {
+        axios
+          .post(
+            `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
+            newComics
+          )
+          .then(function (response) {
+            console.log(response);
+            reset();
+            notify("Добавлено!");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     }
 
     // reset();

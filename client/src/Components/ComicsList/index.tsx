@@ -77,7 +77,8 @@ function RenderComicsList(collection: Comics[]) {
       book.title
         .toLowerCase()
         .replace(".", "")
-        .includes(val.toLowerCase().replace(".", ""))
+        .replace("-", " ")
+        .includes(val.toLowerCase().replace(".", "").replace("-", " "))
     );
     setBooks(filteredItems);
   };
@@ -87,7 +88,7 @@ function RenderComicsList(collection: Comics[]) {
       <input
         type="text"
         placeholder="Название комикса"
-        className="input mt-5 mx-auto px-2.5 block h-7 max-w-xs w-full border border-yellow-300 rounded-md outline-none focus:border-pink-300"
+        className="input mt-5 mx-auto mb-8 px-2.5 block h-7 max-w-xs w-full border border-yellow-300 rounded-md outline-none focus:border-pink-300"
         onChange={handleChange}
       />
       <div className="list m-auto flex justify-center flex-wrap">
