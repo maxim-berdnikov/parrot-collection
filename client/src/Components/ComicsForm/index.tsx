@@ -90,7 +90,7 @@ export function ComicsForm() {
       }
 
       console.log(newComics);
-      axios.post("/api/comics/add", newComics).then(function (response) {
+      axios.post(`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`, newComics).then(function (response) {
         console.log(response);
         reset();
         notify();
