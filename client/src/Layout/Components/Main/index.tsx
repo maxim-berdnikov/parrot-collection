@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ComicsForm } from "../../../Components/ComicsForm/index";
-import {ComicsList} from "../../../Components/ComicsList/index"
+import { ComicsList } from "../../../Components/ComicsList/index";
 
 export function Main() {
   return (

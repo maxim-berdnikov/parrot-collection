@@ -3,7 +3,7 @@ import axios from "axios";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
-import { ComicsItem } from "../ComicsListItem/index";
+import { ComicsItem } from "../ComicsItem";
 
 interface Comics {
   _id: number;
