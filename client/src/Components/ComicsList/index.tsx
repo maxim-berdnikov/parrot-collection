@@ -55,14 +55,9 @@ function RenderComicsList(collection: Comics[]) {
   const newCollection = Object.values(collection);
 
   const newArr = newCollection.sort(function (a, b) {
-    if (a.title > b.title) {
-      return 1;
-    }
-    if (a.title > b.title) {
-      return -1;
-    }
-    // a должно быть равным b
-    return 0;
+    let res = 0;
+    a.title > b.title ? (res = 1) : (res = -1);
+    return res;
   });
 
   // const newArr = newCollection.sort((a, b) =>
