@@ -46,7 +46,7 @@ function ComicsListGet() {
 
   return (
     <>
-      {data ?  <Loader />: <Loader />}
+      {data ? <RenderComicsList {...data} /> : <Loader />}
       <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
