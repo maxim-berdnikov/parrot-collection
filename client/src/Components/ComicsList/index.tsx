@@ -4,6 +4,7 @@ import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
 import { ComicsItem } from "../ComicsItem";
+import { Loader } from "../Loader";
 
 interface Comics {
   _id: number;
@@ -45,7 +46,7 @@ function ComicsListGet() {
 
   return (
     <>
-      {data ? <RenderComicsList {...data} /> : <p>Loading</p>}
+      {data ?  <Loader />: <Loader />}
       <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
