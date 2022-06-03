@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/parrot-collection/static/css/main.b568aa14.chunk.css",
-    "main.js": "/parrot-collection/static/js/main.deaf0b75.chunk.js",
-    "main.js.map": "/parrot-collection/static/js/main.deaf0b75.chunk.js.map",
+    "main.css": "/parrot-collection/static/css/main.c51af784.chunk.css",
+    "main.js": "/parrot-collection/static/js/main.c53d4733.chunk.js",
+    "main.js.map": "/parrot-collection/static/js/main.c53d4733.chunk.js.map",
     "runtime-main.js": "/parrot-collection/static/js/runtime-main.dc31179c.js",
     "runtime-main.js.map": "/parrot-collection/static/js/runtime-main.dc31179c.js.map",
     "static/css/2.f36b9498.chunk.css": "/parrot-collection/static/css/2.f36b9498.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.61fbaff6.chunk.js.map": "/parrot-collection/static/js/2.61fbaff6.chunk.js.map",
     "index.html": "/parrot-collection/index.html",
     "static/css/2.f36b9498.chunk.css.map": "/parrot-collection/static/css/2.f36b9498.chunk.css.map",
-    "static/css/main.b568aa14.chunk.css.map": "/parrot-collection/static/css/main.b568aa14.chunk.css.map",
+    "static/css/main.c51af784.chunk.css.map": "/parrot-collection/static/css/main.c51af784.chunk.css.map",
     "static/js/2.61fbaff6.chunk.js.LICENSE.txt": "/parrot-collection/static/js/2.61fbaff6.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/parrot-collection/static/media/wishlist_full.26a64988.png",
     "static/media/logo.9bfd69cb.svg": "/parrot-collection/static/media/logo.9bfd69cb.svg"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.dc31179c.js",
     "static/css/2.f36b9498.chunk.css",
     "static/js/2.61fbaff6.chunk.js",
-    "static/css/main.b568aa14.chunk.css",
-    "static/js/main.deaf0b75.chunk.js"
+    "static/css/main.c51af784.chunk.css",
+    "static/js/main.c53d4733.chunk.js"
   ]
 }
