@@ -3,8 +3,8 @@ import axios from "axios";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
-import { ComicsItem } from "../ComicsItem";
-import { Loader } from "../Loader";
+import { ComicsItem } from "../../Components/ComicsItem";
+import { Loader } from "../../Components/Loader";
 
 interface Comics {
   _id: number;

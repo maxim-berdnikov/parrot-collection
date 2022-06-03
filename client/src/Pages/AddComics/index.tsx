@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-export function ComicsForm() {
+export function AddComics() {
   const { register, handleSubmit, reset } = useForm();
   const formClasses = "flex flex-col max-w-xs mt-2 mx-auto";
   const fieldClasses =
@@ -78,7 +78,7 @@ export function ComicsForm() {
         console.log(data.cover[0].size);
 
         if (data.cover[0].size > 100000) {
-          notify("Большой размер файла обложки")
+          notify("Большой размер файла обложки");
         } else {
           var FR = new FileReader();
           FR.addEventListener("load", function (e) {
