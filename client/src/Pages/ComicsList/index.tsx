@@ -73,7 +73,10 @@ function RenderComicsList(collection: Comics[]) {
       book.title
         .toLowerCase()
         .replace(".", "")
+        .replace(",", "")
         .replace("-", " ")
+        .replace("(", "")
+        .replace(")", "")
         .includes(val.toLowerCase().replace(".", "").replace("-", " "))
     );
     setBooks(filteredItems);
