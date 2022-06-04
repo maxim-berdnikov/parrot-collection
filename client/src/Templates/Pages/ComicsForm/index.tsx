@@ -3,8 +3,9 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { ComicsFormProps } from "../../../Types";
 
-export function AddComics() {
+export function ComicsForm() {
   const { register, handleSubmit, reset } = useForm();
   const formClasses = "flex flex-col max-w-xs mt-2 mx-auto";
   const fieldClasses =
@@ -16,39 +17,7 @@ export function AddComics() {
 
   const notify = (message: string) => toast(message);
 
-  type Comics = {
-    title: string;
-    authors: string;
-    artists: string;
-    description: string;
-    characters: string;
-    genres: string;
-    edition: string;
-    includes: string;
-    volume: string;
-    book: number;
-    year: number;
-    publisher: string;
-    cover: any;
-    original: number;
-    original_publisher: string;
-  };
-
-  // const date1 = Date.now();
-  // const date2 = Date.now() + 1;
-  //   const date3 = Date.now() + 2;
-
-  //   const activities = [
-  //     { title: "Hiking", date: date1 },
-  //     { title: "Shopping", date: date3 },
-  //     { title: "Trekking", date: date2 },
-  //   ];
-
-  //   const sortedActivities = activities.sort((a, b) => b.date - a.date);
-
-  //   console.log(sortedActivities);
-
-  const onSubmit = (data: Comics) => {
+  const onSubmit = (data: ComicsFormProps) => {
     const authors = data.authors.split(", ");
     const artists = data.artists.split(", ");
     const characters = data.characters.split(", ");

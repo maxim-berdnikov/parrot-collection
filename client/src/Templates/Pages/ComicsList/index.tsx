@@ -5,21 +5,9 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import "./style.scss";
 import { ComicsItem } from "../../Components/ComicsItem";
 import { Loader } from "../../Components/Loader";
+import { ComicsListProps } from "../../../Types";
 
-interface Comics {
-  _id: number;
-  title: string;
-  authors: string[];
-  description: string;
-  characters: string[];
-  cover: string;
-  edition: string;
-  year: string;
-  original: string;
-  owned: string[];
-  sell: string[];
-  wishlist: string[];
-}
+
 
 const queryClient = new QueryClient();
 
@@ -52,7 +40,7 @@ function ComicsListGet() {
   );
 }
 
-function RenderComicsList(collection: Comics[]) {
+function RenderComicsList(collection: ComicsListProps[]) {
   const newCollection = Object.values(collection);
 
   const newArr = newCollection.sort(function (a, b) {
@@ -73,7 +61,10 @@ function RenderComicsList(collection: Comics[]) {
       book.title
         .toLowerCase()
         .replace(".", "")
+        .replace(",", "")
         .replace("-", " ")
+        .replace("(", "")
+        .replace(")", "")
         .includes(val.toLowerCase().replace(".", "").replace("-", " "))
     );
     setBooks(filteredItems);

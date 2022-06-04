@@ -18,7 +18,7 @@
 
     &--mock {
       border: 1px solid #f59e0b;
-      background: url("../../Assets/hat.png") center / 100px no-repeat;
+      background: url("../../../Assets/hat.png") center / 100px no-repeat;
     }
   }
 
@@ -32,28 +32,28 @@
       // selling_902725
 
       &[data-type="collection"] {
-        background-image: url("../../Assets/book_empty.png");
+        background-image: url("../../../Assets/book_empty.png");
       }
 
       &[data-type="read"] {
-        background-image: url("../../Assets/read_empty.png");
+        background-image: url("../../../Assets/read_empty.png");
       }
 
       &[data-type="wishlist"] {
-        background-image: url("../../Assets/wichlist_empty.png");
+        background-image: url("../../../Assets/wichlist_empty.png");
       }
 
       &[data-status="true"] {
         &[data-type="collection"] {
-          background-image: url("../../Assets/book_full.png");
+          background-image: url("../../../Assets/book_full.png");
         }
 
         &[data-type="read"] {
-          background-image: url("../../Assets/read_full.png");
+          background-image: url("../../../Assets/read_full.png");
         }
 
         &[data-type="wishlist"] {
-          background-image: url("../../Assets/wishlist_full.png");
+          background-image: url("../../../Assets/wishlist_full.png");
         }
       }
     }
