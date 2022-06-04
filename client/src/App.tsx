@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router } from "react-router-dom";
-import { Layout } from "./Layout/index";
+import { Layout } from "./Templates/Layout";
+
 
 function App() {
   return (
