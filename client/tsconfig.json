@@ -25,5 +25,6 @@
   ],
   "exclude": [
     "src/index.scss"
-  ]
+  ],
+  "extends": "./tsconfig.paths.json"
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import { ComicsFormProps } from "../../../Types";
+import { ComicsFormProps } from "@types";
 
 export function ComicsForm() {
   const { register, handleSubmit, reset } = useForm();

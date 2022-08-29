@@ -24,5 +24,8 @@
   "homepage": "https://github.com/m-berdnikov/parrot-collection#readme",
   "dependencies": {
     "concurrently": "^6.2.1"
+  },
+  "devDependencies": {
+    "craco-alias": "^3.0.1"
   }
 }
