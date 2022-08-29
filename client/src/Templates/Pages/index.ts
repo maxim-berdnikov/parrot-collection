@@ -1,4 +1,5 @@
-import { ComicsForm } from "./ComicsForm";
-import { ComicsList } from "./ComicsList";
+import { ComicsForm } from "Pages/ComicsForm";
+import { ComicsList } from "Pages/ComicsList";
+import { ComicsItem } from "Pages/ComicsItem";
 
-export { ComicsForm, ComicsList };
+export { ComicsForm, ComicsList, ComicsItem };

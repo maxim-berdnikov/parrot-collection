@@ -1,8 +1,11 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "paths": {
-           "@types" : ["./Types"]
-         }
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "Types": ["./Types"],
+      "Pages": ["./Templates/Pages"],
+      "Pages/*": ["./Templates/Pages/*"],
+      "Assets/*": ["./Assets/*"]
     }
+  }
 }

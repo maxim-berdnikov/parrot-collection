@@ -18,7 +18,6 @@ interface Comics {
 }
 
 export function ComicsItem(comics: Comics) {
-  const currentUser = "m.radik25@gmail.com";
   const [collection, setCollection] = useState(false);
   const [sell, setSell] = useState(false);
   const [wishlist, setWishlist] = useState(false);
@@ -58,7 +57,9 @@ export function ComicsItem(comics: Comics) {
           alt={comics.title}
         />
       ) : (
-        <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer"></div>
+        <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer">
+          <a className="block w-full h-full" href={`/parrot-collection/#/comics/${comics._id}`} />
+        </div>
       )}
       <p className="book__title text-sm">{comics.title}</p>
       <div className="book__buttons mt-3 mx-auto flex justify-between">
