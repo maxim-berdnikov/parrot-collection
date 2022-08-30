@@ -49,7 +49,7 @@ export function ComicsForm() {
         if (data.cover[0].size > 100000) {
           notify("Большой размер файла обложки");
         } else {
-          var FR = new FileReader();
+          const FR = new FileReader();
           FR.addEventListener("load", function (e) {
             cover = e.target!.result;
           });
