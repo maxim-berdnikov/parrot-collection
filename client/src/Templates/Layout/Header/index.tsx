@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../../Assets/logo.svg"
 export function Header() {
-  const lineClass = "px-2 inline-block underline underline-offset-2";
+  const lineClass = "px-2 inline-block underline underline-offset-4";
 
   return (
     <header className="p-0.5 w-full bg-yellow-500">

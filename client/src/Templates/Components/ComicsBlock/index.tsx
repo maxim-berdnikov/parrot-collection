@@ -26,19 +26,21 @@ export function ComicsBlock(comics: ComicsProps) {
   return (
     <div className="book grid">
       {comics.cover ? (
-        <img
-          className="book__img mx-auto mb-2 hover:cursor-pointer"
-          src={comics.cover}
-          alt={comics.title}
-        />
-      ) : (
         <a
           className="block w-full h-full"
           href={`/parrot-collection/comics/${comics._id}`}
         >
-          {" "}
-          <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer" />
+          <img
+            className="book__img mx-auto mb-2 hover:cursor-pointer"
+            src={comics.cover}
+            alt={comics.title}
+          />
         </a>
+      ) : (
+        <a
+          className="block book__img book__img--mock mx-auto mb-2"
+          href={`/parrot-collection/comics/${comics._id}`}
+        > </a>
       )}
       <p className="book__title text-sm">{comics.title}</p>
       <div className="book__buttons mt-3 mx-auto flex justify-between">
