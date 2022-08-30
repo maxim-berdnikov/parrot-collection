@@ -22,9 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         
-#       - name: Install server dependencies
-#         run: cd server && npm ci
-        
       - name: Deploy Server
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
@@ -32,10 +29,5 @@ jobs:
           heroku_app_name: "parrot-collection" 
           heroku_email: "m.radik25@gmail.com"
           appdir: "server" 
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./server
-#           publish_branch: server
-#           full_commit_message: ${{ github.event.head_commit.message }}
+
 
