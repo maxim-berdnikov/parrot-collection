@@ -81,12 +81,12 @@ export const ComicsItem = () => {
               );
             })}
 
-          <button
+          {/* <button
             className="mt-4 mx-auto block w-48 h-8 bg-yellow-500"
             onClick={handleDeleteComics}
           >
             Удалить
-          </button>
+          </button> */}
         </div>
       )}
       <ReactQueryDevtools initialIsOpen={false} />
