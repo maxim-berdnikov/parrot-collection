@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
         
       - name: Install client dependencies
-        run: cd client && npm ci
+        run: cd client && npm i
 
       - name: Build Client
         run: cd client && CI=false npm run build
