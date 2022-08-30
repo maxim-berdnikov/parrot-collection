@@ -12,10 +12,10 @@ export function Header() {
         height="auto"
         className="mx-auto"
       />
-      <a className={lineClass} href="/parrot-collection/#/comics">
+      <a className={lineClass} href="/parrot-collection/comics">
         Главная
       </a>
-      <a className={lineClass} href="/parrot-collection/#/add-comics">
+      <a className={lineClass} href="/parrot-collection/add-comics">
         Добавить комикс
       </a>
     </header>

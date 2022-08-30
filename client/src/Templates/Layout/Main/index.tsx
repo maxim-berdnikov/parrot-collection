@@ -1,16 +1,20 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { ComicsForm, ComicsList, ComicsItem } from "Pages";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { ComicsForm, ComicsList, ComicsItem, NotFound } from "Pages";
 
 export function Main() {
+  const location = useLocation();
+
+  console.log({ location });
   return (
     <main className="my-3 px-10 w-full h-full">
-      <Switch>
-        <Route path="/add-comics" exact component={ComicsForm}></Route>
-        <Route path="/comics/:id" exact component={ComicsItem}></Route>
-        <Route path="/comics" exact component={ComicsList}></Route>
-        <Redirect from="*" exact to="/comics"></Redirect>
-      </Switch>
+      <Routes>
+        <Route path="*" element={<NotFound />}></Route>
+        <Route path="/parrot-collection" element={<ComicsList />}></Route>
+        <Route path="/parrot-collection/add-comics" element={<ComicsForm />}></Route>
+        <Route path="/parrot-collection/comics" element={<ComicsList />}></Route>
+        <Route path="parrot-collection/comics/:_id" element={<ComicsItem />}></Route>
+      </Routes>
     </main>
   );
 }

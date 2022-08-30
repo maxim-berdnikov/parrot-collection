@@ -1,4 +1,4 @@
-export type ComicsListProps = {
+export type ComicsProps = {
   _id: number;
   title: string;
   authors: string[];
@@ -11,4 +11,4 @@ export type ComicsListProps = {
   owned: string[];
   sell: string[];
   wishlist: string[];
-}
+};

@@ -1,0 +1,3 @@
+import { RUSSIAN_ALPHABET, ENGLISH_ALPHABET } from "Helpers/const";
+
+export { RUSSIAN_ALPHABET, ENGLISH_ALPHABET };

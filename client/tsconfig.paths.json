@@ -3,9 +3,14 @@
     "baseUrl": "./src",
     "paths": {
       "Types": ["./Types"],
+      "Hooks": ["./Hooks"],
+      "Helpers": ["./Helpers"],
       "Pages": ["./Templates/Pages"],
       "Pages/*": ["./Templates/Pages/*"],
-      "Assets/*": ["./Assets/*"]
+      "Assets/*": ["./Assets/*"],
+      "Components": ["./Templates/Components"],
+      "Components/*": ["./Templates/Components/*"],
+      "Templates": ["./Templates"]
     }
   }
 }

@@ -1,13 +1,24 @@
 import React from "react";
-import { HashRouter as Router } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
 import { Layout } from "./Templates/Layout";
 
-
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        keepPreviousData: false,
+      },
+    },
+  });
+
   return (
-    <Router>
-      <Layout />
-    </Router>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Layout />
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,29 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useMutation } from "react-query";
+import { ComicsProps } from "Types";
 
-interface Comics {
-  _id: number;
-  title: string;
-  authors: string[];
-  description: string;
-  characters: string[];
-  cover: string;
-  edition: string;
-  year: string;
-  original: string;
-  owned: string[];
-  sell: string[];
-  wishlist: string[];
-}
-
-export function ComicsItem(comics: Comics) {
+export function ComicsBlock(comics: ComicsProps) {
   const [collection, setCollection] = useState(false);
   const [sell, setSell] = useState(false);
   const [wishlist, setWishlist] = useState(false);
-  const mutation = useMutation((comicsItem: Comics) =>
-    axios.delete(`/comics/${comicsItem._id}`, {})
-  );
 
   const handleClick = (type: "collection" | "read" | "wishlist") => {
     switch (type) {
@@ -42,12 +23,6 @@ export function ComicsItem(comics: Comics) {
     }
   };
 
-  // useEffect(() => {
-  //   setCollection(comics.owned.includes(currentUser));
-  //   setSell(comics.sell.includes(currentUser));
-  //   setWishlist(comics.wishlist.includes(currentUser));
-  // }, [comics]);
-
   return (
     <div className="book grid">
       {comics.cover ? (
@@ -57,9 +32,13 @@ export function ComicsItem(comics: Comics) {
           alt={comics.title}
         />
       ) : (
-        <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer">
-          <a className="block w-full h-full" href={`/parrot-collection/#/comics/${comics._id}`} />
-        </div>
+        <a
+          className="block w-full h-full"
+          href={`/parrot-collection/comics/${comics._id}`}
+        >
+          {" "}
+          <div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer" />
+        </a>
       )}
       <p className="book__title text-sm">{comics.title}</p>
       <div className="book__buttons mt-3 mx-auto flex justify-between">
