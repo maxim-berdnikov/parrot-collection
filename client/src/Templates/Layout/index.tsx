@@ -4,12 +4,12 @@ import { Header } from "./Header";
 import { Main } from "./Main";
 import { Footer } from "./Footer";
 
-export function Layout() {
-  return (
-    <div className="grid h-screen text-center wrapper">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
+export const Layout = (): JSX.Element => {
+	return (
+		<div className="grid h-screen text-center wrapper">
+			<Header />
+			<Main />
+			<Footer />
+		</div>
+	);
+};

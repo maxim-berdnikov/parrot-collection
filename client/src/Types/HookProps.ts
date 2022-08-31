@@ -1,9 +1,9 @@
 import { ComicsProps } from "Types";
 
 export type HookProps<T> = {
-  isLoading: boolean;
-  error: any;
-  data: T | undefined;
+	isLoading: boolean;
+	error: any;
+	data: T | undefined;
 };
 
 export type UseGetComicsListProps = HookProps<ComicsProps[]>;

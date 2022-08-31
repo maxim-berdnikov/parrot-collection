@@ -1,5 +1,5 @@
 import React from "react";
 
-export const NotFound = () => {
-  return <p>Страница не найдена</p>;
+export const NotFound = (): JSX.Element => {
+	return <p>Страница не найдена</p>;
 };
