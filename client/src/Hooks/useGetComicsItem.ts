@@ -14,7 +14,7 @@ export const useGetComicsItem = (
 		return data;
 	};
 
-	const { isLoading, error, data } = useQuery("comicsItem", getComicsItem);
+	const { isLoading, error, data, isFetching } = useQuery("comicsItem", getComicsItem);
 
-	return { isLoading, error, data };
+	return { isLoading, error, data, isFetching };
 };

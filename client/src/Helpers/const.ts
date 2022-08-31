@@ -62,3 +62,21 @@ export const RUSSIAN_ALPHABET = [
 	"ю",
 	"я",
 ];
+
+export const FIELDS = [
+	{ db: "title", ui: "Название" },
+	{ db: "authors", ui: "Авторы" },
+	{ db: "artists", ui: "Художники" },
+	{ db: "description", ui: "Описание" },
+	{ db: "characters", ui: "Персонаж/персонажи" },
+	{ db: "genres", ui: "Жанр/жанры" },
+	{ db: "edition", ui: "Тип издания" },
+	{ db: "includes", ui: "Включает выпуски" },
+	{ db: "volume", ui: "Том (серия), например, Venom Volume 1" },
+	{ db: "book", ui: "Номер тома (книга в серии - 1, 2, 3 и т.д)" },
+	{ db: "year", ui: "Год издания" },
+	{ db: "publisher", ui: "Издатель" },
+	{ db: "original", ui: "Год издания оригинала" },
+	{ db: "original_publisher", ui: "Издатель оригинала" },
+	{ db: "cover", ui: "Обложка" },
+];

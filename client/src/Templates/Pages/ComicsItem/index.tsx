@@ -1,44 +1,46 @@
 import React from "react";
 import axios from "axios";
-import { Loader } from "Components/Loader";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ComicsProps } from "Types";
-import { useNavigate } from "react-router-dom";
+import { Loader } from "Components/Loader";
 import { useGetComicsItem } from "Hooks";
-
-import "./style.scss";
+import { FIELDS, ROUTES } from "Helpers";
+import "Pages/ComicsItem/style.scss";
 
 export const ComicsItem = (): JSX.Element => {
-	const navigate = useNavigate();
 	const { _id } = useParams<{ _id: string }>();
-	const ADMIN_MODE = false;
+	const {
+		isLoading: isComicsLoading,
+		error: comicsError,
+		data: comics,
+		isFetching,
+	} = useGetComicsItem(_id);
 
-	const VISIBLE_FIELDS = [
-		"title",
-		"authors",
-		"artists",
-		"description",
-		"characters",
-		"genres",
-		"edition",
-		"includes",
-		"volume",
-		"book",
-		"year",
-		"publisher",
-		"original",
-		"original_publisher",
-	];
+	const { register, handleSubmit } = useForm();
+	const navigate = useNavigate();
+	const ADMIN_MODE = true;
+
+	const fieldClasses =
+		"my-2 px-2 w-full border border-yellow-400	rounded focus:outline-none focus:border-pink-300";
+	const inputClasses = `${fieldClasses} h-10 appearance-none`;
+	const textareaClasses = `${fieldClasses} pt-1 h-20 resize-none`;
+	const buttonClasses = "mt-4 mx-auto block w-48 h-8 bg-yellow-500 text-white";
 
 	const deleteComicsItem = async () =>
 		await axios
 			.get<string>(
 				`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${_id}/delete`,
-				{ params: { _id } }
+				{
+					params: {
+						_id,
+					},
+				}
 			)
 			.then((response) =>
-				response.data === "Удалено"
+				response.data === "Ok"
 					? navigate("/parrot-collection/comics")
 					: console.log({ response })
 			);
@@ -48,53 +50,79 @@ export const ComicsItem = (): JSX.Element => {
 		deleteComicsItem();
 	};
 
-	const { isLoading, error, data } = useGetComicsItem(_id);
+	const notify = (message: string) => toast(message);
 
-	error && console.log({ error });
+	const onSubmit = (data: ComicsProps) => {
+		axios
+			.post<string>(ROUTES.api.updateComics(_id), data)
+			.then((response) =>
+				response.data === "Ok"
+					? notify("Информация о комиксе обновлена")
+					: notify("При обновлении произошла ошибка")
+			);
+	};
+
+	comicsError && console.log({ comicsError });
 
 	return (
 		<>
-			{error && <p>При загрузке данных произошла ошибка</p>}
-			{isLoading && <Loader />}
-			{data && (
-				<div>
-					{data.cover ? (
-						<img
-							className="book__img mx-auto mb-2 hover:cursor-pointer"
-							src={data.cover}
-							alt={data.title}
-						/>
-					) : (
-						<div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer"></div>
-					)}
-					{Object.keys(data)
-						.filter(
-							(key) =>
-								VISIBLE_FIELDS.includes(key) && data[key as keyof ComicsProps]
-						)
-						.map((key) => {
-							const currentItem = data[key as keyof ComicsProps];
+			{comicsError && <p>При загрузке данных произошла ошибка</p>}
+			{(isComicsLoading || isFetching) && <Loader />}
+			{comics && !isFetching && (
+				<>
+					<form className="mx-auto max-w-lg" onSubmit={handleSubmit(onSubmit)}>
+						{comics.cover ? (
+							<img
+								className="book__img mx-auto mb-2 hover:cursor-pointer"
+								src={comics.cover}
+								alt={comics.title}
+							/>
+						) : (
+							<div className="book__img book__img--mock mx-auto mb-2 hover:cursor-pointer"></div>
+						)}
 
-							return Array.isArray(currentItem) ? (
-								<div key={key} className="info-list">
-									{currentItem.map((item) => (
-										<p key={item}>{item}</p>
-									))}
-								</div>
+						{FIELDS.map((field) => {
+							const currentField = comics[field.db as keyof ComicsProps];
+
+							return field.db === "description" ? (
+								<textarea
+									key={field.db}
+									className={textareaClasses}
+									placeholder="Описание"
+									defaultValue={currentField}
+									disabled={!ADMIN_MODE}
+									{...register(field.db)}
+								/>
 							) : (
-								<p key={key}>{currentItem}</p>
+								<input
+									key={field.db}
+									className={inputClasses}
+									type="text"
+									placeholder={field.ui}
+									defaultValue={
+										Array.isArray(currentField)
+											? (currentField as string[]).join(", ") || ""
+											: currentField || ""
+									}
+									disabled={!ADMIN_MODE}
+									{...register(field.db)}
+								/>
 							);
 						})}
 
-					{ADMIN_MODE && (
-						<button
-							className="mt-4 mx-auto block w-48 h-8 bg-yellow-500"
-							onClick={handleDeleteComics}
-						>
-							Удалить
-						</button>
-					)}
-				</div>
+						{ADMIN_MODE && (
+							<>
+								<button type="submit" className={buttonClasses}>
+									Обновить
+								</button>
+								<button className={buttonClasses} onClick={handleDeleteComics}>
+									Удалить
+								</button>
+							</>
+						)}
+					</form>
+					<ToastContainer />
+				</>
 			)}
 			<ReactQueryDevtools initialIsOpen={false} />
 		</>

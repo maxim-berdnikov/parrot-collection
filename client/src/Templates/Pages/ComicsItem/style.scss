@@ -1,16 +1,16 @@
 .book {
-  margin: 0 20px 40px;
-  grid-template-rows: auto 1fr auto;
-  width: 150px;
-  text-align: center;
+	margin: 0 5px 40px;
+	grid-template-rows: auto 1fr auto;
+	width: 150px;
+	text-align: center;
 
-  &__img {
-    width: 124px;
-    height: 186px;
+	&__img {
+		width: 124px;
+		height: 186px;
 
-    &--mock {
-      border: 1px solid #f59e0b;
-      background: url("../../../Assets/hat.png") center / 100px no-repeat;
-    }
-  }
+		&--mock {
+			border: 1px solid #f59e0b;
+			background: url("../../../Assets/hat.png") center / 100px no-repeat;
+		}
+	}
 }

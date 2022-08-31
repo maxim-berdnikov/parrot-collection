@@ -18,7 +18,7 @@ router.post("/add", async (request, response) => {
     await newBdItem.save();
 
     response.status(201).json({ newBdItem });
-  } catch (e) {
+  } catch (error) {
     response
       .status(500)
       .json({ message: "Что-то пошло не так, попробуйте снова", e });
@@ -32,7 +32,7 @@ router.get("/list", async (request, response) => {
     // fs.writeFileSync("comics.json", JSON.stringify(list));
 
     response.json(list);
-  } catch (e) {
+  } catch (error) {
     response
       .status(500)
       .json({ message: "Что-то пошло не так, попробуйте снова" });
@@ -44,7 +44,7 @@ router.get("/:id", async (request, response) => {
     const comics = await Comics.findById(request.params.id);
 
     response.json(comics);
-  } catch (e) {
+  } catch (error) {
     response
       .status(500)
       .json({ message: "Что-то пошло не так, попробуйте снова" });
@@ -54,24 +54,22 @@ router.get("/:id", async (request, response) => {
 router.get("/:id/delete", async (request, response) => {
   try {
     await Comics.findByIdAndRemove(request.params.id).then(
-      response.json("Удалено")
+      response.json("Ok")
     );
-  } catch (e) {
+  } catch (error) {
     response
       .status(500)
       .json({ message: "Что-то пошло не так, попробуйте снова" });
   }
 });
 
-router.get("/:id/update", async (request, response) => {
+router.post("/:id/update", async (request, response) => {
   try {
-    const filter = { _id: request.params.id };
-    const update = { age: 59 };
-
-    await Comics.findOneAndUpdate(filter, update).then(
-      response.json("Обновлено")
-    );
-  } catch (e) {
+    await Comics.findOneAndUpdate(
+      { _id: request.params.id },
+      request.body
+    ).then(response.json("Ok"));
+  } catch (error) {
     response
       .status(500)
       .json({ message: "Что-то пошло не так, попробуйте снова" });

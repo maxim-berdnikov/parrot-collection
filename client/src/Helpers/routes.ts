@@ -11,5 +11,7 @@ export const ROUTES = {
 		addNewComics: `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
 		deleteComics: (id: string | undefined): string =>
 			`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${id}/delete`,
+		updateComics: (id: string | undefined): string =>
+			`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${id}/update`,
 	},
 };

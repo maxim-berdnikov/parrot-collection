@@ -4,7 +4,7 @@ import { ComicsForm, ComicsList, ComicsItem, NotFound } from "Pages";
 
 export const Main = (): JSX.Element => {
 	return (
-		<main className="my-3 px-10 w-full h-full">
+		<main className="my-3 px-5 w-full h-full">
 			<Routes>
 				<Route path="*" element={<NotFound />}></Route>
 				<Route path="/" element={<ComicsList />}></Route>

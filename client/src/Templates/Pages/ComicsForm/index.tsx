@@ -83,8 +83,6 @@ export const ComicsForm = (): JSX.Element => {
 					});
 			}
 		}
-
-		// reset();
 	};
 
 	return (
@@ -179,7 +177,7 @@ export const ComicsForm = (): JSX.Element => {
 			<input
 				className={inputClasses}
 				type="file"
-				placeholder="Издатель оригинала"
+				placeholder="Обложка"
 				{...register("cover")}
 			/>
 			<button type="submit" className={buttonClasses}>
