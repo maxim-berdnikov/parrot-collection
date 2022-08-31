@@ -1,3 +1,4 @@
+import { ROUTES } from "Helpers";
 import React, { useState } from "react";
 import { ComicsProps } from "Types";
 
@@ -26,10 +27,7 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 	return (
 		<div className="book grid">
 			{comics.cover ? (
-				<a
-					className="block w-full h-full"
-					href={`/parrot-collection/comics/${comics._id}`}
-				>
+				<a className="block w-full h-full" href={ROUTES.comicsItem(comics._id)}>
 					<img
 						className="book__img mx-auto mb-2 hover:cursor-pointer"
 						src={comics.cover}
@@ -39,10 +37,8 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 			) : (
 				<a
 					className="block book__img book__img--mock mx-auto mb-2"
-					href={`/parrot-collection/comics/${comics._id}`}
-				>
-					{" "}
-				</a>
+					href={ROUTES.comicsItem(comics._id)}
+				></a>
 			)}
 			<p className="book__title text-sm">{comics.title}</p>
 			<div className="book__buttons mt-3 mx-auto flex justify-between">

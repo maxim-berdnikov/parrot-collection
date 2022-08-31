@@ -1,12 +1,11 @@
 import axios from "axios";
+import { ROUTES } from "Helpers";
 import { useQuery } from "react-query";
 import { UseGetComicsListProps } from "Types";
 
 export const useGetComicsList = (): UseGetComicsListProps => {
 	const getAllComics = async () => {
-		const { data } = await axios.get(
-			`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/list`
-		);
+		const { data } = await axios.get(ROUTES.api.getComicsList);
 		return data;
 	};
 

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { ComicsFormProps } from "Types";
+import { ROUTES } from "Helpers";
 
 export const ComicsForm = (): JSX.Element => {
 	const { register, handleSubmit, reset } = useForm();
@@ -59,10 +60,7 @@ export const ComicsForm = (): JSX.Element => {
 					FR.readAsDataURL(data.cover[0]);
 
 					axios
-						.post(
-							`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
-							newComics
-						)
+						.post(ROUTES.api.addNewComics, newComics)
 						.then(function (response) {
 							console.log(response);
 							reset();
@@ -74,10 +72,7 @@ export const ComicsForm = (): JSX.Element => {
 				}
 			} else {
 				axios
-					.post(
-						`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
-						newComics
-					)
+					.post(ROUTES.api.addNewComics, newComics)
 					.then(function (response) {
 						console.log(response);
 						reset();

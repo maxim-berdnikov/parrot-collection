@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "Assets/logo.svg";
+import { ROUTES } from "Helpers";
 
 export const Header = (): JSX.Element => {
 	const lineClass = "px-2 inline-block underline underline-offset-4";
@@ -13,10 +14,10 @@ export const Header = (): JSX.Element => {
 				height="auto"
 				className="mx-auto"
 			/>
-			<a className={lineClass} href="/parrot-collection/comics">
+			<a className={lineClass} href={ROUTES.comicsList}>
 				Главная
 			</a>
-			<a className={lineClass} href="/parrot-collection/add-comics">
+			<a className={lineClass} href={ROUTES.comicsForm}>
 				Добавить комикс
 			</a>
 		</header>
