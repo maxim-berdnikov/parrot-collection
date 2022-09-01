@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { ComicsProps } from "Types";
 import { Loader } from "Components/Loader";
 import { useGetComicsItem } from "Hooks";
-import { FIELDS, ROUTES } from "Helpers";
+import { FIELDS, ROUTES, ADMIN_MODE } from "Helpers";
 import "Pages/ComicsItem/style.scss";
 
 export const ComicsItem = (): JSX.Element => {
@@ -21,7 +21,6 @@ export const ComicsItem = (): JSX.Element => {
 
 	const { register, handleSubmit } = useForm();
 	const navigate = useNavigate();
-	const ADMIN_MODE = true;
 
 	const fieldClasses =
 		"my-2 px-2 w-full border border-yellow-400	rounded focus:outline-none focus:border-pink-300";
@@ -31,18 +30,13 @@ export const ComicsItem = (): JSX.Element => {
 
 	const deleteComicsItem = async () =>
 		await axios
-			.get<string>(
-				`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${_id}/delete`,
-				{
-					params: {
-						_id,
-					},
-				}
-			)
+			.get<string>(ROUTES.api.deleteComics(_id), {
+				params: {
+					_id,
+				},
+			})
 			.then((response) =>
-				response.data === "Ok"
-					? navigate("/parrot-collection/comics")
-					: console.log({ response })
+				response.data === "Ok" ? navigate("/comics") : console.log({ response })
 			);
 
 	const handleDeleteComics = () => {

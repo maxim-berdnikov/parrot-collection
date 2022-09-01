@@ -1,5 +1,5 @@
 export type ComicsProps = {
-	_id: number;
+	_id: string;
 	title: string;
 	authors: string[];
 	description: string;

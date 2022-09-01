@@ -1,6 +1,7 @@
-import { ROUTES } from "Helpers";
 import React, { useState } from "react";
+import { ROUTES } from "Helpers";
 import { ComicsProps } from "Types";
+import "Components/ComicsBlock/style.scss";
 
 export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 	const [collection, setCollection] = useState(false);
@@ -40,7 +41,7 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 					href={ROUTES.comicsItem(comics._id)}
 				></a>
 			)}
-			<p className="book__title text-sm">{comics.title}</p>
+			<p className="book__title mx-auto text-sm">{comics.title}</p>
 			<div className="book__buttons mt-3 mx-auto flex justify-between">
 				<div
 					className="book__buttons-item bg-center bg-cover bg-no-repeat transition"

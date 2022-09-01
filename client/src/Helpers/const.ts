@@ -80,3 +80,5 @@ export const FIELDS = [
 	{ db: "original_publisher", ui: "Издатель оригинала" },
 	{ db: "cover", ui: "Обложка" },
 ];
+
+export const ADMIN_MODE = false;

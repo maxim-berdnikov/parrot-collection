@@ -1,17 +1,18 @@
+import { Alphabet } from "Components";
 import React, { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ComicsBlock } from "../../Components/ComicsBlock";
 import { Loader } from "../../Components/Loader";
 import { ComicsProps } from "Types";
 import { useGetComicsList } from "Hooks";
-import { ENGLISH_ALPHABET, RUSSIAN_ALPHABET } from "Helpers";
-import { Alphabet } from "Components";
+import { ENGLISH_ALPHABET, RUSSIAN_ALPHABET, sorting } from "Helpers";
 
 import "./style.scss";
 
 export function ComicsList(): JSX.Element {
 	const {
 		isLoading: isListLoading,
+		isFetching: isListFetching,
 		error: listError,
 		data: comicsList,
 	} = useGetComicsList();
@@ -20,10 +21,12 @@ export function ComicsList(): JSX.Element {
 	const [library, setLibrary] = useState<ComicsProps[]>([]);
 	const [isBooksLoading, setIsBooksLoading] = useState(false);
 	const [currentLetter, setCurrentLetter] = useState("");
+	const [searchValue, setSearchValue] = useState("");
 
 	const handleChangeSearchValue = (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
+		setSearchValue(event.target.value);
 		setCurrentLetter("");
 		const val = event.target.value.trim();
 		const filteredItems = library.filter((book) =>
@@ -40,12 +43,12 @@ export function ComicsList(): JSX.Element {
 	};
 
 	const handleChooseSection = (letter: string) => {
+		setSearchValue("");
 		setCurrentLetter(letter);
 
 		const booksByLetter = library.filter(
 			(book) => book.title.substring(0, 1).toLowerCase() === letter
 		);
-		console.log(booksByLetter);
 		setBooks(booksByLetter);
 	};
 
@@ -57,9 +60,8 @@ export function ComicsList(): JSX.Element {
 	useEffect(() => {
 		if (comicsList) {
 			setIsBooksLoading(true);
-			const newCollection = comicsList.sort((a, b) =>
-				a.title > b.title ? 1 : -1
-			);
+
+			const newCollection = sorting(comicsList) as ComicsProps[];
 
 			setBooks(newCollection);
 			setLibrary(newCollection);
@@ -87,13 +89,19 @@ export function ComicsList(): JSX.Element {
 					>
 						Все
 					</p>
-					<input
-						type="text"
-						placeholder="Название комикса"
-						className="input mt-5 mx-auto mb-8 px-2.5 block h-7 max-w-xs w-full border border-yellow-300 rounded-md outline-none focus:border-pink-300"
-						onChange={handleChangeSearchValue}
-					/>
-					<div className="list m-auto flex justify-center flex-wrap">
+					<div className="search mt-5 mb-8 flex justify-center items-center gap-2.5">
+						<input
+							type="text"
+							placeholder="Название комикса"
+							value={searchValue}
+							className="input px-2.5 block h-7 max-w-xs w-full border border-yellow-300 rounded-md outline-none focus:border-pink-300"
+							onChange={handleChangeSearchValue}
+						/>
+						<div className="counter w-14 border border-yellow-300 rounded-md">
+							{books.length}
+						</div>
+					</div>
+					<div className="list m-auto flex justify-center flex-wrap ">
 						{books.length > 0 ? (
 							books.map((comics) => (
 								<ComicsBlock key={comics._id} {...comics} />
@@ -104,7 +112,7 @@ export function ComicsList(): JSX.Element {
 					</div>
 				</>
 			)}
-			{(isListLoading || isBooksLoading) && <Loader />}
+			{(isListLoading || isBooksLoading || isListFetching) && <Loader />}
 			{listError && <p>Ничего не найдено :(</p>}
 			<ReactQueryDevtools initialIsOpen={false} />
 		</>

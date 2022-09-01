@@ -1,7 +1,7 @@
 const LINK = "/parrot-collection/#";
 
 export const ROUTES = {
-	comicsItem: (id: number): string => `${LINK}/comics/${id}`,
+	comicsItem: (id: string): string => `${LINK}/comics/${id}`,
 	comicsList: `${LINK}/comics`,
 	comicsForm: `${LINK}/add-comics`,
 	api: {

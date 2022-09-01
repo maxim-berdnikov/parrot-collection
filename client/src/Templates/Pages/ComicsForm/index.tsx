@@ -45,8 +45,6 @@ export const ComicsForm = (): JSX.Element => {
 			};
 
 			if (data.cover[0]) {
-				console.log(data.cover[0].size);
-
 				if (data.cover[0].size > 100000) {
 					notify("Большой размер файла обложки");
 				} else {
@@ -62,7 +60,7 @@ export const ComicsForm = (): JSX.Element => {
 					axios
 						.post(ROUTES.api.addNewComics, newComics)
 						.then(function (response) {
-							console.log(response);
+							console.log({ response });
 							reset();
 							notify("Добавлено!");
 						})
@@ -74,7 +72,7 @@ export const ComicsForm = (): JSX.Element => {
 				axios
 					.post(ROUTES.api.addNewComics, newComics)
 					.then(function (response) {
-						console.log(response);
+						console.log({ response });
 						reset();
 						notify("Добавлено!");
 					})

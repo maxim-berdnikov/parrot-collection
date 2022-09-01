@@ -9,7 +9,10 @@ export const useGetComicsList = (): UseGetComicsListProps => {
 		return data;
 	};
 
-	const { isLoading, error, data } = useQuery("comics", getAllComics);
+	const { isLoading, isFetching, error, data } = useQuery(
+		"comics",
+		getAllComics
+	);
 
-	return { isLoading, error, data };
+	return { isLoading, isFetching, error, data };
 };
