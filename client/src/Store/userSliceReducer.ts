@@ -8,7 +8,7 @@ type UserStateProps = {
 
 const initialState: UserStateProps = {
 	user: "",
-	adminMode: false,
+	adminMode: localStorage.getItem("adminMode") === "true",
 };
 
 export const userSlice = createSlice({
@@ -18,6 +18,7 @@ export const userSlice = createSlice({
 		checkUser(state, action: PayloadAction<string>) {
 			state.user = action.payload;
 			state.adminMode = true;
+			localStorage.setItem("adminMode", "true");
 		},
 	},
 });
