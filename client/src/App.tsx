@@ -5,8 +5,6 @@ import { HashRouter } from "react-router-dom";
 import { setupStore } from "Store";
 import { Layout } from "./Templates/Layout";
 
-console.log(process.env.REACT_APP_USER);
-
 export const App = (): JSX.Element => {
 	const queryClient = new QueryClient({
 		defaultOptions: {
