@@ -7,10 +7,12 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { ComicsProps } from "Types";
 import { Loader } from "Components/Loader";
 import { useGetComicsItem } from "Hooks";
-import { FIELDS, ROUTES, ADMIN_MODE } from "Helpers";
+import { FIELDS, ROUTES } from "Helpers";
 import "Pages/ComicsItem/style.scss";
+import { useAppSelector } from "Store/hooks";
 
 export const ComicsItem = (): JSX.Element => {
+	const { adminMode } = useAppSelector((state) => state.user);
 	const { _id } = useParams<{ _id: string }>();
 	const {
 		isLoading: isComicsLoading,
@@ -84,7 +86,7 @@ export const ComicsItem = (): JSX.Element => {
 									className={textareaClasses}
 									placeholder="Описание"
 									defaultValue={currentField}
-									disabled={!ADMIN_MODE}
+									disabled={!adminMode}
 									{...register(field.db)}
 								/>
 							) : (
@@ -98,13 +100,13 @@ export const ComicsItem = (): JSX.Element => {
 											? (currentField as string[]).join(", ") || ""
 											: currentField || ""
 									}
-									disabled={!ADMIN_MODE}
+									disabled={!adminMode}
 									{...register(field.db)}
 								/>
 							);
 						})}
 
-						{ADMIN_MODE && (
+						{adminMode && (
 							<>
 								<button type="submit" className={buttonClasses}>
 									Обновить

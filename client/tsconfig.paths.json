@@ -1,16 +1,18 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "Types": ["./Types"],
-      "Hooks": ["./Hooks"],
-      "Helpers": ["./Helpers"],
-      "Pages": ["./Templates/Pages"],
-      "Pages/*": ["./Templates/Pages/*"],
-      "Assets/*": ["./Assets/*"],
-      "Components": ["./Templates/Components"],
-      "Components/*": ["./Templates/Components/*"],
-      "Templates": ["./Templates"]
-    }
-  }
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"Types": ["./Types"],
+			"Hooks": ["./Hooks"],
+			"Helpers": ["./Helpers"],
+			"Pages": ["./Templates/Pages"],
+			"Pages/*": ["./Templates/Pages/*"],
+			"Assets/*": ["./Assets/*"],
+			"Components": ["./Templates/Components"],
+			"Components/*": ["./Templates/Components/*"],
+			"Templates": ["./Templates"],
+			"Store": ["./Store"],
+			"Store/*": ["./Store/*"]
+		}
+	}
 }
