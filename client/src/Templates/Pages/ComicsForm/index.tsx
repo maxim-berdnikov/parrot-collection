@@ -45,6 +45,7 @@ export const ComicsForm = (): JSX.Element => {
 				publisher: data.publisher,
 				original: data.original,
 				original_publisher: data.original_publisher,
+				isRead: data.isRead,
 			};
 
 			if (data.cover[0]) {

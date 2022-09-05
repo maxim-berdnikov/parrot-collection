@@ -14,4 +14,5 @@ export type ComicsFormProps = {
 	cover: any;
 	original: number;
 	original_publisher: string;
+	isRead: boolean;
 };
