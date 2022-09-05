@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ROUTES } from "Helpers";
 import { ComicsProps } from "Types";
 import "Components/ComicsBlock/style.scss";
+import axios from "axios";
+import { useAppSelector } from "Store/hooks";
 
 export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
+	const { adminMode } = useAppSelector((state) => state.user);
 	const [collection, setCollection] = useState(false);
-	const [sell, setSell] = useState(false);
+	const [read, setRead] = useState(false);
 	const [wishlist, setWishlist] = useState(false);
 
 	const handleClick = (type: "collection" | "read" | "wishlist") => {
@@ -17,13 +20,23 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 				setCollection(!collection);
 				break;
 			case "read":
-				setSell(!sell);
+				axios
+					.post<string>(ROUTES.api.updateComics(comics._id), { isRead: !read })
+					.then((response) =>
+						response.data === "Ok" ? setRead(!read) : void 0
+					);
 				break;
 			case "wishlist":
 				setWishlist(!wishlist);
 				break;
 		}
 	};
+
+	useEffect(() => {
+		if (comics) {
+			setRead(comics.isRead);
+		}
+	}, [comics]);
 
 	return (
 		<div className="book grid">
@@ -47,18 +60,21 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 					className="book__buttons-item bg-center bg-cover bg-no-repeat transition"
 					data-type="collection"
 					data-status={collection}
+					data-disabled={!adminMode}
 					onClick={() => handleClick("collection")}
 				></div>
 				<div
 					className="book__buttons-item bg-center bg-cover bg-no-repeat transition"
 					data-type="read"
-					data-status={sell}
+					data-status={read}
+					data-disabled={!adminMode}
 					onClick={() => handleClick("read")}
 				></div>
 				<div
 					className="book__buttons-item bg-center bg-cover bg-no-repeat transition"
 					data-type="wishlist"
 					data-status={wishlist}
+					data-disabled={!adminMode}
 					onClick={() => handleClick("wishlist")}
 				></div>
 			</div>

@@ -20,6 +20,7 @@
 		&-item {
 			width: 30px;
 			height: 30px;
+			cursor: pointer;
 
 			// selling_902725
 
@@ -47,6 +48,10 @@
 				&[data-type="wishlist"] {
 					background-image: url("../../../Assets/wishlist_full.png");
 				}
+			}
+
+			&[data-disabled="true"] {
+				pointer-events: none;
 			}
 		}
 	}

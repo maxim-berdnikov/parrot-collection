@@ -85,7 +85,7 @@ export const ComicsItem = (): JSX.Element => {
 									key={field.db}
 									className={textareaClasses}
 									placeholder="Описание"
-									defaultValue={currentField}
+									defaultValue={currentField as string}
 									disabled={!adminMode}
 									{...register(field.db)}
 								/>
@@ -98,7 +98,7 @@ export const ComicsItem = (): JSX.Element => {
 									defaultValue={
 										Array.isArray(currentField)
 											? (currentField as string[]).join(", ") || ""
-											: currentField || ""
+											: (currentField as string) || ""
 									}
 									disabled={!adminMode}
 									{...register(field.db)}

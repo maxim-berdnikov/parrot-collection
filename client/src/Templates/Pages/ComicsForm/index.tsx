@@ -5,16 +5,19 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { ComicsFormProps } from "Types";
 import { ROUTES } from "Helpers";
+import "./style.scss";
 
 export const ComicsForm = (): JSX.Element => {
 	const { register, handleSubmit, reset } = useForm();
 	const formClasses = "flex flex-col max-w-xs mt-2 mx-auto";
 	const fieldClasses =
-		"mb-2 px-2 border border-yellow-400	rounded focus:outline-none focus:border-pink-300";
-	const inputClasses = `${fieldClasses} h-10 appearance-none`;
+		"mb-2 px-2 border border-yellow-400 rounded focus:outline-none focus:border-pink-300";
+	const inputClasses = `${fieldClasses} w-full h-10 appearance-none`;
+	const checkboxClasses = "checkbox absolute opacity-0";
 	const textareaClasses = `${fieldClasses} pt-1 h-20 resize-none`;
 	const buttonClasses =
 		"h-10 border border-transparent rounded bg-yellow-400 font-bold text-white";
+	const labelClasses = `${fieldClasses} label w-10 h-10 cursor-pointer relative after:w-10 after:h-10`;
 
 	const notify = (message: string) => toast(message);
 
@@ -89,12 +92,23 @@ export const ComicsForm = (): JSX.Element => {
 			name="add-comics"
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<input
-				className={inputClasses}
-				type="text"
-				placeholder="Название"
-				{...register("title")}
-			/>
+			<div className="flex justify-between gap-2.5">
+				<input
+					className={inputClasses}
+					type="text"
+					placeholder="Название"
+					{...register("title")}
+				/>
+				<input
+					className={checkboxClasses}
+					type="checkbox"
+					placeholder="Прочитано"
+					id="isRead"
+					{...register("isRead")}
+				/>
+				<label className={labelClasses} htmlFor="isRead"></label>
+			</div>
+
 			<input
 				className={inputClasses}
 				type="text"

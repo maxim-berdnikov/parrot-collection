@@ -11,4 +11,5 @@ export type ComicsProps = {
 	owned: string[];
 	sell: string[];
 	wishlist: string[];
+	isRead: boolean;
 };

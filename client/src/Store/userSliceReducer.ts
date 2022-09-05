@@ -16,9 +16,15 @@ export const userSlice = createSlice({
 	initialState,
 	reducers: {
 		checkUser(state, action: PayloadAction<string>) {
-			state.user = action.payload;
-			state.adminMode = true;
-			localStorage.setItem("adminMode", "true");
+			if (process.env.REACT_APP_USER === action.payload) {
+				state.user = action.payload;
+				state.adminMode = true;
+				localStorage.setItem("adminMode", "true");
+			} else {
+				state.user = "";
+				state.adminMode = false;
+				localStorage.setItem("adminMode", "false");
+			}
 		},
 	},
 });
