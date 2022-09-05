@@ -11,7 +11,7 @@ const schema = new Schema({
   genres: { type: [String] },
   edition: { type: String },
   includes: { type: String },
-  volume: { type: String, default: '0' },
+  volume: { type: String, default: "0" },
   book: { type: Number, default: 0 },
   year: { type: String },
   publisher: { type: String },
@@ -21,6 +21,7 @@ const schema = new Schema({
   sell: { type: String },
   wishlist: { type: String },
   addingDate: { type: String },
+  isRead: { type: Boolean },
   // itemId: {type: Types.ObjectId, ref: 'User'}
 });
 

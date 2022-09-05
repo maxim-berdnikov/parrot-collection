@@ -53,9 +53,7 @@ router.get("/:id", async (request, response) => {
 
 router.get("/:id/delete", async (request, response) => {
   try {
-    await Comics.findByIdAndRemove(request.params.id).then(
-      response.json("Ok")
-    );
+    await Comics.findByIdAndRemove(request.params.id).then(response.json("Ok"));
   } catch (error) {
     response
       .status(500)
