@@ -4,7 +4,7 @@
 
 The easiest way to store/view/share your collections. 
 
-Client - https://m-berdnikov.github.io/parrot-collection
+Client - https://maxim-berdnikov.github.io/parrot-collection/
 
 Server - https://parrot-collection.herokuapp.com
 
@@ -16,8 +16,6 @@ Server - https://parrot-collection.herokuapp.com
 
 Изначально была идея сделать сайт, где можно будет собирать любые коллекция - комиксы, книги, фигурки, открытки, игры (выгрузка игр из профиля Steam). 
 Но пока решил сделать только с комиксами. Осталное - в далеких планах.
-
-When I found out about the MERN stack (MongoDB, Express, React, Node.js), I decided to use it to create a home project solving the one of my own problems.
 
 ## Tech Stack
 
