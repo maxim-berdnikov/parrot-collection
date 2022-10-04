@@ -2,7 +2,7 @@ import { ComicsProps } from "Types";
 
 export type HookProps<T> = {
 	isLoading: boolean;
-	error: any;
+	error: unknown;
 	data: T | undefined;
 	isFetching?: boolean;
 };
