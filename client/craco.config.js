@@ -1,4 +1,3 @@
-/* eslint-disable */
 const cracoAlias = require("craco-alias");
 
 module.exports = {
