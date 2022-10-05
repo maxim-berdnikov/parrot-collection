@@ -11,7 +11,7 @@ export type ComicsFormProps = {
 	book: number;
 	year: number;
 	publisher: string;
-	cover: unknown;
+	cover: FileList;
 	original: number;
 	original_publisher: string;
 	isRead: boolean;
