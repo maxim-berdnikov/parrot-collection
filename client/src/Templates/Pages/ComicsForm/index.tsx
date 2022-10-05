@@ -28,8 +28,6 @@ export const ComicsForm = (): JSX.Element => {
 		const genres = data.genres.split(", ");
 		let cover: string | ArrayBuffer | null = "";
 
-		console.log(data.cover)
-
 		if (data.title) {
 			const newComics = {
 				title: data.title,
