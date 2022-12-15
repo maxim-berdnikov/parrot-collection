@@ -1,33 +1,32 @@
-name: Deploy server
+# name: Deploy server
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - 'server/**'
-      
-  # pull_request:
-  #   branches:
-  #     - master
-  #   paths:
-  #     - 'server/**'
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - 'server/**'
 
-  workflow_dispatch:
+#   # pull_request:
+#   #   branches:
+#   #     - master
+#   #   paths:
+#   #     - 'server/**'
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+#   workflow_dispatch:
 
-    steps:
-      - uses: actions/checkout@v2
-        
-      - name: Deploy Server
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "parrot-collection" 
-          heroku_email: "m.radik25@gmail.com"
-          appdir: "server" 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
+#     steps:
+#       - uses: actions/checkout@v2
+
+#       - name: Deploy Server
+#         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+#         with:
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           heroku_app_name: "parrot-collection"
+#           heroku_email: "m.radik25@gmail.com"
+#           appdir: "server"
 
