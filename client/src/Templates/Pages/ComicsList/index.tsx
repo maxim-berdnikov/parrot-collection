@@ -57,6 +57,11 @@ export function ComicsList(): JSX.Element {
 		setCurrentLetter("");
 	};
 
+	const handleFilter = () => {
+		setBooks(library.filter((book) => !book.isRead));
+		setCurrentLetter("");
+	};
+
 	useEffect(() => {
 		if (comicsList) {
 			setIsBooksLoading(true);
@@ -88,6 +93,12 @@ export function ComicsList(): JSX.Element {
 						onClick={handleClickAll}
 					>
 						Все
+					</p>
+					<p
+						className="mx-auto w-32 cursor-pointer border-transparent border-solid border border-transparent hover:border-yellow-500"
+						onClick={handleFilter}
+					>
+						Непрочитанные
 					</p>
 					<div className="search mt-5 mb-8 flex justify-center items-center gap-2.5">
 						<input

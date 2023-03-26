@@ -6,10 +6,10 @@ require("dotenv").config();
 
 const app = express();
 const allowedOrigins = [`${process.env.ALLOW_REQUEST_URL}`];
-const options = {
-  origin: allowedOrigins
+var corsOptions = {
+  origin: allowedOrigins,
 };
-app.use(cors(options));
+app.use(cors(corsOptions));
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
