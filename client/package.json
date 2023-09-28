@@ -18,11 +18,16 @@
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
-    "concurrently": "^6.2.1",
-    "craco-alias": "^3.0.1",
+    "concurrently": "^6.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "fast-sort": "^3.2.0",
     "http-proxy-middleware": "^2.0.1",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.5.3",
     "node-sass": "^6.0.1",
+    "nodemon": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.14.2",
@@ -42,7 +47,9 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc",
     "pre-commit": "npm run lint && npm run tsc",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-server": "node ./server/index.js",
+    "start-dev-server": "nodemon ./server/index.js"
   },
   "eslintConfig": {
     "extends": [
@@ -68,6 +75,7 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^9.8.6",
+    "craco-alias": "^3.0.1",
     "eslint": "^8.23.0",
     "eslint-plugin-react": "^7.31.1",
     "postcss": "^7.0.36",
