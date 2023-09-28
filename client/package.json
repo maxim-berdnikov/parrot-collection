@@ -51,7 +51,6 @@
     "start-server": "node ./server/index.js",
     "start-dev-server": "nodemon ./server/index.js",
     "local-server": "concurrently \"npm start \" \"npm run start-dev-server \""
-
   },
   "eslintConfig": {
     "extends": [
