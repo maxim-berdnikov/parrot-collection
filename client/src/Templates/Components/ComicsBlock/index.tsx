@@ -14,10 +14,13 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 	const handleClick = (type: "collection" | "read" | "wishlist") => {
 		switch (type) {
 			case "collection":
-				if (collection === false && wishlist === true) {
-					setWishlist(false);
-				}
-				setCollection(!collection);
+				axios
+					.post<string>(ROUTES.api.updateComics(comics._id), {
+						onShelf: !collection,
+					})
+					.then((response) =>
+						response.data === "Ok" ? setCollection(!collection) : void 0
+					);
 				break;
 			case "read":
 				axios
@@ -27,7 +30,14 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 					);
 				break;
 			case "wishlist":
-				setWishlist(!wishlist);
+				axios
+					.post<string>(ROUTES.api.updateComics(comics._id), {
+						inWishlist: !wishlist,
+					})
+					.then((response) =>
+						response.data === "Ok" ? setWishlist(!wishlist) : void 0
+					);
+
 				break;
 		}
 	};
@@ -35,6 +45,8 @@ export const ComicsBlock = (comics: ComicsProps): JSX.Element => {
 	useEffect(() => {
 		if (comics) {
 			setRead(comics.isRead);
+			setCollection(comics.onShelf || false);
+			setWishlist(comics.inWishlist || false);
 		}
 	}, [comics]);
 

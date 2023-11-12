@@ -12,4 +12,6 @@ export type ComicsProps = {
 	sell: string[];
 	wishlist: string[];
 	isRead: boolean;
+	onShelf?: boolean;
+	inWishlist?: boolean;
 };

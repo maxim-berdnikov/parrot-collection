@@ -22,6 +22,8 @@ const schema = new Schema({
   wishlist: { type: String },
   addingDate: { type: String },
   isRead: { type: Boolean },
+  onShelf: { type: Boolean },
+  inWishlist: { type: Boolean },
   // itemId: {type: Types.ObjectId, ref: 'User'}
 });
 
