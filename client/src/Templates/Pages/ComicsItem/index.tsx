@@ -48,7 +48,9 @@ export const ComicsItem = (): JSX.Element => {
 
 	const notify = (message: string) => toast(message);
 
-	const onSubmit = (data: ComicsProps) => {
+	const sendData = (data: ComicsProps & { file?: FileList }) => {
+		delete data.file;
+
 		axios
 			.post<string>(ROUTES.api.updateComics(_id), data)
 			.then((response) =>
@@ -56,6 +58,34 @@ export const ComicsItem = (): JSX.Element => {
 					? notify("Информация о комиксе обновлена")
 					: notify("При обновлении произошла ошибка")
 			);
+	};
+
+	const onSubmit = (data: ComicsProps & { file?: FileList }) => {
+		let cover: string | ArrayBuffer | null = "";
+
+		if (data.file && data.file[0]) {
+			if (data.file[0].size > 100000) {
+				notify("Большой размер файла обложки");
+
+				return;
+			} else {
+				const FR = new FileReader();
+				FR.addEventListener("load", (event) => {
+					cover =
+						event.target !== null && event.target.result
+							? event.target.result
+							: null;
+
+					data.cover = cover as string;
+
+					sendData(data);
+				});
+
+				FR.readAsDataURL(data.file[0]);
+			}
+		} else {
+			sendData(data);
+		}
 	};
 
 	comicsError && console.log({ comicsError });
@@ -88,6 +118,14 @@ export const ComicsItem = (): JSX.Element => {
 									defaultValue={currentField as string}
 									disabled={!adminMode}
 									{...register(field.db)}
+								/>
+							) : field.db === "cover" ? (
+								<input
+									className={inputClasses}
+									type="file"
+									placeholder="Обложкаsdfsdfsdf"
+									disabled={!adminMode}
+									{...register("file")}
 								/>
 							) : (
 								<input
