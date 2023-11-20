@@ -9,6 +9,9 @@ import { ENGLISH_ALPHABET, RUSSIAN_ALPHABET, sorting } from "Helpers";
 
 import "./style.scss";
 
+const buttonClass =
+	"mx-auto mb-0.5 px-2 block cursor-pointer border-transparent border-solid border border-transparent hover:border-yellow-500";
+
 export function ComicsList(): JSX.Element {
 	const {
 		isLoading: isListLoading,
@@ -57,8 +60,12 @@ export function ComicsList(): JSX.Element {
 		setCurrentLetter("");
 	};
 
-	const handleFilter = () => {
-		setBooks(library.filter((book) => !book.isRead));
+	const handleFilter = (type: "notRead" | "inList") => {
+		if (type === "notRead") {
+			setBooks(library.filter((book) => !book.isRead));
+		} else {
+			setBooks(library.filter((book) => book.inWishlist));
+		}
 		setCurrentLetter("");
 	};
 
@@ -88,18 +95,21 @@ export function ComicsList(): JSX.Element {
 						currentLetter={currentLetter}
 						handleChooseSection={handleChooseSection}
 					/>
-					<p
-						className="mx-auto w-20 cursor-pointer border-transparent border-solid border border-transparent hover:border-yellow-500"
-						onClick={handleClickAll}
-					>
+					<button className={buttonClass} onClick={handleClickAll}>
 						Все
-					</p>
-					<p
-						className="mx-auto w-32 cursor-pointer border-transparent border-solid border border-transparent hover:border-yellow-500"
-						onClick={handleFilter}
+					</button>
+					<button
+						className={buttonClass}
+						onClick={() => handleFilter("notRead")}
 					>
 						Непрочитанные
-					</p>
+					</button>
+					<button
+						className={buttonClass}
+						onClick={() => handleFilter("inList")}
+					>
+						В списке
+					</button>
 					<div className="search mt-5 mb-8 flex justify-center items-center gap-2.5">
 						<input
 							type="text"
