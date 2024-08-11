@@ -14,19 +14,18 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module",
 		"ecmaFeatures": {
-      "jsx": true
-    }
+			"jsx": true
+		}
 	},
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
 		"indent": ["warn", "tab", { "SwitchCase": 1 }],
-		"linebreak-style": ["warn", "unix"],
 		"quotes": ["warn", "double"],
 		"semi": ["warn", "always"]
 	},
 	"settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+		"react": {
+			"version": "detect"
+		}
+	}
 }
