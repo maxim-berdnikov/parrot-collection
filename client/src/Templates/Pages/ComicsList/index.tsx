@@ -40,6 +40,7 @@ export function ComicsList(): JSX.Element {
 				.replace("-", " ")
 				.replace("(", "")
 				.replace(")", "")
+				.replace("ё", "е")
 				.includes(val.toLowerCase().replace(".", "").replace("-", " "))
 		);
 		setBooks(filteredItems);

@@ -121,9 +121,10 @@ export const ComicsItem = (): JSX.Element => {
 								/>
 							) : field.db === "cover" ? (
 								<input
+									key={"inputCover"}
 									className={inputClasses}
 									type="file"
-									placeholder="Обложкаsdfsdfsdf"
+									placeholder="Обложкаs"
 									disabled={!adminMode}
 									{...register("file")}
 								/>
@@ -146,10 +147,14 @@ export const ComicsItem = (): JSX.Element => {
 
 						{adminMode && (
 							<>
-								<button type="submit" className={buttonClasses}>
+								<button key={"update"} type="submit" className={buttonClasses}>
 									Обновить
 								</button>
-								<button className={buttonClasses} onClick={handleDeleteComics}>
+								<button
+									key={"delete"}
+									className={buttonClasses}
+									onClick={handleDeleteComics}
+								>
 									Удалить
 								</button>
 							</>
