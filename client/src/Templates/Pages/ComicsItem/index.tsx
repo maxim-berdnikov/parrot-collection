@@ -27,7 +27,7 @@ export const ComicsItem = (): JSX.Element => {
 	const fieldClasses =
 		"my-2 px-2 w-full border border-yellow-400	rounded focus:outline-none focus:border-pink-300";
 	const inputClasses = `${fieldClasses} h-10 appearance-none`;
-	const textareaClasses = `${fieldClasses} pt-1 h-20 resize-none`;
+	const textareaClasses = `${fieldClasses} pt-1 h-20`;
 	const buttonClasses = "mt-4 mx-auto block w-48 h-8 bg-yellow-500 text-white";
 
 	const deleteComicsItem = async () =>
@@ -52,7 +52,10 @@ export const ComicsItem = (): JSX.Element => {
 		delete data.file;
 
 		axios
-			.post<string>(ROUTES.api.updateComics(_id), data)
+			.post<string>(ROUTES.api.updateComics(_id), {
+				...data,
+				description: data.description.trim(),
+			})
 			.then((response) =>
 				response.data === "Ok"
 					? notify("Информация о комиксе обновлена")

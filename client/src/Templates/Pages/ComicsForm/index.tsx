@@ -33,7 +33,7 @@ export const ComicsForm = (): JSX.Element => {
 				title: data.title,
 				authors,
 				artists,
-				description: data.description,
+				description: data.description.trim(),
 				characters,
 				cover,
 				genres,
@@ -49,8 +49,6 @@ export const ComicsForm = (): JSX.Element => {
 			};
 
 			if (data.cover[0]) {
-
-
 				if (data.cover[0].size > 100000) {
 					notify("Большой размер файла обложки");
 				} else {

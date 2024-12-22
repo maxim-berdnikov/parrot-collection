@@ -25,17 +25,26 @@ router.post("/add", async (request, response) => {
 	}
 });
 
-router.get("/list", async (request, response) => {
+router.get("/list", async (_, response) => {
 	try {
-		const list = await Comics.find();
+		let list = await Comics.find();
+		// const resp1 = await Comics.find().skip(500).limit(500);
+		// const resp2 = await Comics.find().skip(1000).limit(500);
+		// const resp3 = await Comics.find().skip(1500).limit(500);
 
-		// fs.writeFileSync("comics.json", JSON.stringify(list));
+		console.log(list.length);
+
+		// fs.writeFileSync(
+		// 	"comics.json",
+		// 	Buffer.from(JSON.stringify(list)).toString("base64")
+		// );
 
 		response.json(list);
 	} catch (error) {
+		console.log({ error });
 		response
 			.status(500)
-			.json({ message: "Что-то пошло не так, попробуйте снова" });
+			.json({ message: "Что-то пошло не так, попробуйте снова", error });
 	}
 });
 
