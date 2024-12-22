@@ -8,6 +8,7 @@ export const ROUTES = {
 		getComicsById: (id: string | undefined): string =>
 			`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${id}`,
 		getComicsList: `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/list`,
+		getComicsListFromBackup: `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/list-backup`,
 		addNewComics: `${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/add`,
 		deleteComics: (id: string | undefined): string =>
 			`${process.env.REACT_APP_REQUEST_URL || ""}/api/comics/${id}/delete`,

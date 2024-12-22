@@ -1,8 +1,85 @@
+const {
+	MongoTransferer,
+	MongoDBDuplexConnector,
+	LocalFileSystemDuplexConnector,
+} = require("mongodb-snapshot");
+
 const { Router } = require("express");
 const Comics = require("../models/Comics");
 const fs = require("fs");
 
 const router = Router();
+
+async function dumpMongo2Localfile() {
+	const mongo_connector = new MongoDBDuplexConnector({
+		connection: {
+			uri: `mongodb+srv://parrot_head:9kCM*yacsva_wk.@parrotcollection.rzf99.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+			dbname: "parrot-collection",
+		},
+	});
+
+	const localfile_connector = new LocalFileSystemDuplexConnector({
+		connection: {
+			path: "./backup.tar",
+		},
+	});
+
+	const transferer = new MongoTransferer({
+		source: mongo_connector,
+		targets: [localfile_connector],
+	});
+
+	for await (const { total, write } of transferer) {
+		console.log(`remaining bytes to write: ${total - write}`);
+	}
+}
+
+async function restoreLocalfile2Mongo() {
+	const mongo_connector = new MongoDBDuplexConnector({
+		connection: {
+			uri: `mongodb+srv://parrot_head:9kCM*yacsva_wk.@parrotcollection.rzf99.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+			dbname: "parrot-collection",
+		},
+	});
+
+	const localfile_connector = new LocalFileSystemDuplexConnector({
+		connection: {
+			path: "./backup.tar",
+		},
+	});
+
+	const transferer = new MongoTransferer({
+		source: localfile_connector,
+		targets: [mongo_connector],
+	});
+
+	for await (const { total, write } of transferer) {
+		console.log(`remaining bytes to write: ${total - write}`);
+	}
+}
+
+async function mongoSnap(restore = false) {
+	const mongo_connector = new BKP.MongoDBDuplexConnector({
+		connection: {
+			uri: `mongodb+srv://parrot_head:9kCM*yacsva_wk.@parrotcollection.rzf99.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+			dbname: "parrot-collection",
+		},
+	});
+	const localfile_connector = new BKP.LocalFileSystemDuplexConnector({
+		connection: { path: "./backup.tar" },
+	});
+	const transferer = restore
+		? new BKP.MongoTransferer({
+				source: localfile_connector,
+				targets: [mongo_connector],
+		  })
+		: new BKP.MongoTransferer({
+				source: mongo_connector,
+				targets: [localfile_connector],
+		  });
+	for await (const { total, write } of transferer) {
+	}
+}
 
 router.post("/add", async (request, response) => {
 	try {
@@ -28,18 +105,23 @@ router.post("/add", async (request, response) => {
 router.get("/list", async (_, response) => {
 	try {
 		let list = await Comics.find();
-		// const resp1 = await Comics.find().skip(500).limit(500);
-		// const resp2 = await Comics.find().skip(1000).limit(500);
-		// const resp3 = await Comics.find().skip(1500).limit(500);
 
-		console.log(list.length);
-
-		// fs.writeFileSync(
-		// 	"comics.json",
-		// 	Buffer.from(JSON.stringify(list)).toString("base64")
-		// );
+		dumpMongo2Localfile(list);
 
 		response.json(list);
+	} catch (error) {
+		console.log({ error });
+		response
+			.status(500)
+			.json({ message: "Что-то пошло не так, попробуйте снова", error });
+	}
+});
+
+router.get("/list-backup", async (_, response) => {
+	try {
+		await restoreLocalfile2Mongo().then((res) => {
+			response.send(res);
+		});
 	} catch (error) {
 		console.log({ error });
 		response
