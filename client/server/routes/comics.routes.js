@@ -106,9 +106,11 @@ router.get("/list", async (_, response) => {
 	try {
 		let list = await Comics.find();
 
-		dumpMongo2Localfile(list);
-
 		response.json(list);
+
+		fs.writeFileSync(`comics1.json`, JSON.stringify(list.slice(0, 500)));
+		fs.writeFileSync(`comics2.json`, JSON.stringify(list.slice(500, 1000)));
+		fs.writeFileSync(`comics3.json`, JSON.stringify(list.slice(1000)));
 	} catch (error) {
 		console.log({ error });
 		response
