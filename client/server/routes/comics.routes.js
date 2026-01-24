@@ -108,9 +108,20 @@ router.get("/list", async (_, response) => {
 
 		response.json(list);
 
-		fs.writeFileSync(`comics1.json`, JSON.stringify(list.slice(0, 500)));
-		fs.writeFileSync(`comics2.json`, JSON.stringify(list.slice(500, 1000)));
-		fs.writeFileSync(`comics3.json`, JSON.stringify(list.slice(1000)));
+		const SIZE = 500;
+
+		const stacksNumber = Math.ceil(list.length / SIZE);
+
+		for (let i = 0; i <= stacksNumber; i++) {
+			fs.writeFileSync(
+				`comics-${i}.json`,
+				JSON.stringify(list.slice(i * SIZE, (i + 1) * SIZE))
+			);
+		}
+
+		// fs.writeFileSync(`comics1.json`, JSON.stringify(list.slice(0, 500)));
+		// fs.writeFileSync(`comics2.json`, JSON .stringify(list.slice(500, 1000)));
+		// fs.writeFileSync(`comics3.json`, JSON.stringify(list.slice(1000)));
 	} catch (error) {
 		console.log({ error });
 		response
