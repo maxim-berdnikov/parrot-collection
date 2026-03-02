@@ -6,13 +6,14 @@ import { Loader } from "../../Components/Loader";
 import { ComicsProps } from "Types";
 import { useGetComicsList } from "Hooks";
 import { ENGLISH_ALPHABET, RUSSIAN_ALPHABET, sorting } from "Helpers";
+import { useInView } from "react-intersection-observer";
 
 import "./style.scss";
 
 const buttonClass =
 	"mx-auto mb-0.5 px-2 block cursor-pointer border-transparent border-solid border border-transparent hover:border-yellow-500";
 
-export function ComicsList(): JSX.Element {
+export const ComicsList = (): JSX.Element => {
 	const {
 		isLoading: isListLoading,
 		isFetching: isListFetching,
@@ -25,6 +26,28 @@ export function ComicsList(): JSX.Element {
 	const [isBooksLoading, setIsBooksLoading] = useState(false);
 	const [currentLetter, setCurrentLetter] = useState("");
 	const [searchValue, setSearchValue] = useState("");
+	// const [skip, setSkip] = useState(0);
+
+	// const { ref, inView } = useInView();
+	// useEffect(() => {
+	// 	if (inView) {
+	// 		const { data: comicsList1 } = useGetComicsList(skip);
+
+	// 		setIsBooksLoading(true);
+
+	// 		if (comicsList1) {
+	// 			const newCollection = sorting([
+	// 				...books,
+	// 				...comicsList1,
+	// 			]) as ComicsProps[];
+
+	// 			setBooks(newCollection);
+	// 			setLibrary(newCollection);
+	// 			setIsBooksLoading(false);
+	// 			setSkip((prev) => prev + 20);
+	// 		}
+	// 	}
+	// }, []);
 
 	const handleChangeSearchValue = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -71,7 +94,7 @@ export function ComicsList(): JSX.Element {
 	};
 
 	useEffect(() => {
-		if (comicsList) {
+		if (comicsList && Array.isArray(comicsList)) {
 			setIsBooksLoading(true);
 
 			const newCollection = sorting(comicsList) as ComicsProps[];
@@ -79,6 +102,7 @@ export function ComicsList(): JSX.Element {
 			setBooks(newCollection);
 			setLibrary(newCollection);
 			setIsBooksLoading(false);
+			// setSkip(20);
 		}
 	}, [comicsList]);
 
@@ -139,4 +163,4 @@ export function ComicsList(): JSX.Element {
 			<ReactQueryDevtools initialIsOpen={false} />
 		</>
 	);
-}
+};

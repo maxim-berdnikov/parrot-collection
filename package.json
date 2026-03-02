@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/m-berdnikov/parrot-collection#readme",
   "dependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "react-intersection-observer": "^10.0.2"
   },
   "devDependencies": {
     "craco-alias": "^3.0.1"
